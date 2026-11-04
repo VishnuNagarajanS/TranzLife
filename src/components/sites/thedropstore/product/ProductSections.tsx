@@ -836,6 +836,7 @@ export function ProductMoreSection({ product }: { product: Product }) {
                     product={p}
                     pointerText="Drag"
                     draggable
+                    withIngredientRain
                     htmlAttributes={{
                       style: { width: '100%' },
                       onClick: markActive,

@@ -8,6 +8,7 @@ import { createHeadingInTween } from '@/lib/dropstore/heading-tween';
 import { ImageSequence } from '@/lib/dropstore/image-sequence';
 import type { Product } from '@/lib/tranzlife-data';
 import { cn } from '@/lib/utils';
+import { IngredientRain } from './IngredientRain';
 import { PRODUCT_POINTER_SIZE, usePreloader } from './state';
 import { Text } from './Text';
 
@@ -112,6 +113,8 @@ export interface ProductTileProps {
   withPointerText?: boolean;
   withHoverAnimation?: boolean;
   withImageSequence?: boolean;
+  /** Ingredient silhouettes drop into the card on hover. */
+  withIngredientRain?: boolean;
   htmlAttributes?: React.AnchorHTMLAttributes<HTMLAnchorElement> & Record<string, unknown>;
 }
 
@@ -127,6 +130,7 @@ export function ProductTile({
   withPointerText = true,
   withHoverAnimation = true,
   withImageSequence = false,
+  withIngredientRain = false,
   htmlAttributes,
 }: ProductTileProps) {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -185,7 +189,8 @@ export function ProductTile({
       data-pointer-chaser-size={withPointerText ? PRODUCT_POINTER_SIZE : undefined}
       data-draggable={draggable ? '' : undefined}
     >
-      <div className="flex items-center justify-center w-full h-full pointer-events-none p-[8%]">
+      {withIngredientRain && <IngredientRain product={product} />}
+      <div className="relative flex items-center justify-center w-full h-full pointer-events-none p-[8%]" data-product-tile-image="">
         <ImageSequenceView
           key={frames[0]}
           frames={frames}
@@ -198,7 +203,7 @@ export function ProductTile({
       </div>
       {withProductInfo && (
         <div
-          className="absolute inset-0 flex gap-6 items-end justify-between p-6 pointer-events-none"
+          className="absolute inset-0 z-10 flex gap-6 items-end justify-between p-6 pointer-events-none"
           data-product-tile-info=""
         >
           <Text tag="h2" variant="text-base" data-product-tile-title="">
