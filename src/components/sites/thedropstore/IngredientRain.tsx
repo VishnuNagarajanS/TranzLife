@@ -6,7 +6,7 @@ import type { Product } from '@/lib/tranzlife-data';
 
 /*
  * Hover effect for product tiles: flat silhouettes of the product's own ingredients drop in from
- * above and settle around the pack, the card deepens in colour and tilts, the pack leans the other
+ * above and settle around the pack, the card deepens in colour and tilts right, the pack leans further the same
  * way. On leave the pieces fall out through the bottom. Pure transforms, so it stays on the compositor.
  */
 
@@ -60,20 +60,22 @@ const SHAPES_FOR: Record<string, [Shape, Shape]> = {
 };
 
 /**
- * Resting places (percent of the card): framing the pack on all sides, with the bottom strip kept
- * clear so the name that slides up on hover stays readable.
+ * Resting places (percent of the card): big, overlapping pieces that fill the whole card, the
+ * centre ones landing behind the pack, like a pile poured in from above.
  */
 const PIECES: { x: number; y: number; size: number; rotate: number }[] = [
-  { x: -6, y: -4, size: 30, rotate: -24 },
-  { x: 30, y: -6, size: 20, rotate: 50 },
-  { x: 72, y: -2, size: 28, rotate: 32 },
-  { x: 2, y: 24, size: 22, rotate: 18 },
-  { x: 80, y: 22, size: 24, rotate: -40 },
-  { x: -10, y: 44, size: 28, rotate: 64 },
-  { x: 76, y: 42, size: 30, rotate: -12 },
-  { x: 6, y: 62, size: 20, rotate: -48 },
-  { x: 84, y: 64, size: 22, rotate: 70 },
-  { x: 54, y: 4, size: 16, rotate: -30 },
+  { x: -12, y: -8, size: 44, rotate: -24 },
+  { x: 26, y: -12, size: 40, rotate: 40 },
+  { x: 64, y: -6, size: 46, rotate: 14 },
+  { x: 4, y: 18, size: 42, rotate: 70 },
+  { x: 40, y: 14, size: 44, rotate: -36 },
+  { x: 72, y: 24, size: 40, rotate: -60 },
+  { x: -14, y: 42, size: 46, rotate: 22 },
+  { x: 28, y: 40, size: 42, rotate: 110 },
+  { x: 62, y: 46, size: 46, rotate: -14 },
+  { x: 2, y: 66, size: 44, rotate: -70 },
+  { x: 40, y: 66, size: 46, rotate: 36 },
+  { x: 74, y: 70, size: 42, rotate: 84 },
 ];
 
 function mix(a: string, b: string, t: number) {
@@ -124,8 +126,8 @@ export function IngredientRain({ product }: { product: Product }) {
         const height = tile.offsetHeight;
         tl = gsap.timeline();
         // The tile's own CSS transition fades the colour; GSAP only moves it.
-        tl.set(tile, { backgroundColor: deep }, 0).to(tile, { rotate: -2, scale: 1.015, duration: 0.5, ease: 'power3.out' }, 0);
-        if (pack) tl.to(pack, { rotate: 5, scale: 1.04, duration: 0.6, ease: 'back.out(2)' }, 0);
+        tl.set(tile, { backgroundColor: deep }, 0).to(tile, { rotate: 3, scale: 1.015, duration: 0.5, ease: 'power3.out' }, 0);
+        if (pack) tl.to(pack, { rotate: 6, scale: 1.05, duration: 0.6, ease: 'back.out(2)' }, 0);
         pieces.forEach((piece, i) => {
           const rest = Number(piece.dataset.rotate);
           // Start just above the card: far enough that every piece enters from the top edge.

@@ -118,6 +118,9 @@ export interface ProductTileProps {
   htmlAttributes?: React.AnchorHTMLAttributes<HTMLAnchorElement> & Record<string, unknown>;
 }
 
+/** With the ingredient rain the name sits on a cream pill on hover, so it reads over the pieces. */
+const PILL = 'px-3 py-1.5 transition-colors duration-300 [.product-tile:hover_&]:bg-cream/90';
+
 /** Pack on a soft tint of the product's accent; on hover the name and line slide up. */
 export function ProductTile({
   product,
@@ -206,11 +209,16 @@ export function ProductTile({
           className="absolute inset-0 z-10 flex gap-6 items-end justify-between p-6 pointer-events-none"
           data-product-tile-info=""
         >
-          <Text tag="h2" variant="text-base" data-product-tile-title="">
+          <Text tag="h2" variant="text-base" className={cn(withIngredientRain && PILL, 'rounded-2xl')} data-product-tile-title="">
             <div className="uppercase tracking-[0.08em]">{product.title}</div>
             <span className="text-gray-800">{product.subtitle}</span>
           </Text>
-          <Text tag="p" variant="text-sm" className="uppercase tracking-[0.12em] text-right" data-product-tile-price="">
+          <Text
+            tag="p"
+            variant="text-sm"
+            className={cn(withIngredientRain && PILL, 'rounded-full uppercase tracking-[0.12em] text-right')}
+            data-product-tile-price=""
+          >
             <span className="inline-block w-2 h-2 rounded-full mr-2" style={{ backgroundColor: product.accent }} />
             {product.focus}
           </Text>
