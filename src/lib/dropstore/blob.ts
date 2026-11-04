@@ -2,9 +2,9 @@
 
 import { useLayoutEffect } from 'react';
 import * as THREE from 'three';
-import { gsap, isTouchDevice, breakpoints } from './gsap';
+import { gsap, isTouchDevice } from './gsap';
 import { Pointer } from './pointer';
-import { useMotion, useTicker } from './motion';
+import { useTicker } from './motion';
 import { blobVertexHead, blobVertexMain } from './blob-shaders';
 
 /** Height of the orthographic frustum in world units. */
@@ -154,8 +154,6 @@ let renderer: THREE.WebGLRenderer | undefined;
 let ambientLight: THREE.AmbientLight | undefined;
 let dirLight: THREE.DirectionalLight | undefined;
 let blob: Blob | undefined;
-let video: HTMLVideoElement | undefined;
-let videoMesh: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial> | undefined;
 
 export const getAspect = () => window.innerWidth / window.innerHeight;
 
@@ -263,68 +261,4 @@ export function useBlobChasing() {
   });
 
   return getBlob;
-}
-
-/** Rounded "unboxing" video plane rendered in the same WebGL scene (about page). */
-export function useVideo() {
-  useMotion(
-    () => {
-      const { scene, camera } = getScene();
-      const fontSize = parseInt(getComputedStyle(document.body).fontSize);
-      const unit = FRUSTUM_HEIGHT / innerHeight;
-      const width = FRUSTUM_HEIGHT * getAspect() - 2 * (1.5 * fontSize * unit);
-      const height = width / (4096 / 2160);
-
-      if (!video) {
-        video = document.createElement('video');
-        video.playsInline = true;
-        video.loop = true;
-        video.muted = true;
-        const source = document.createElement('source');
-        source.src = '/un-unboxing-1080-rounded.mp4';
-        source.type = 'video/mp4';
-        video.append(source);
-        video.play().catch(() => undefined);
-      }
-
-      const geometry = new THREE.PlaneGeometry(width, height, Math.round(10 * width), Math.round(10 * height));
-      const texture = new THREE.VideoTexture(video);
-      const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0 });
-      material.onBeforeCompile = (shader) => {
-        material.userData.shader = shader;
-        shader.uniforms.uOffset = { value: new THREE.Vector2() };
-        shader.vertexShader = shader.vertexShader
-          .replace(
-            'void main() {',
-            `uniform vec2 uOffset;
-vec3 deformationCurve(vec3 point, vec2 uv, vec2 offset) {
-  float offsetX = (sin(uv.y * PI) * offset.x) * ((uv.x - 0.5) * 2.);
-  float offsetY = (sin(uv.x * PI) * offset.y);
-  point.x += offsetX;
-  point.y += offsetY;
-  return point;
-}
-void main() {`
-          )
-          .replace('#include <begin_vertex>', 'vec3 transformed = deformationCurve(position, uv, uOffset);');
-      };
-      videoMesh = new THREE.Mesh(geometry, material);
-      videoMesh.lookAt(camera.position);
-      videoMesh.position.y = -FRUSTUM_HEIGHT;
-      scene.add(videoMesh);
-
-      return () => {
-        if (!videoMesh) return;
-        scene.remove(videoMesh);
-        videoMesh.geometry.dispose();
-        videoMesh.material.map?.dispose();
-        videoMesh.material.dispose();
-        videoMesh = undefined;
-      };
-    },
-    { matchMedia: `(min-width: ${breakpoints.md})` },
-    []
-  );
-
-  return () => ({ videoMesh, video, ...getScene() });
 }
