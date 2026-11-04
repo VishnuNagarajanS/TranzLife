@@ -82,6 +82,45 @@ function syrupBottle({ name, sub, color }) {
   );
 }
 
+function inhaler({ name, sub, color, label = '#fff', box = true }) {
+  const boxEl = box
+    ? `
+  <g transform="translate(110 120)">
+    <path d="M0 30 L40 0 H230 L190 30 Z" fill="${color}" opacity="0.75"/>
+    <rect x="0" y="30" width="190" height="370" rx="6" fill="${color}"/>
+    <path d="M190 30 L230 0 V370 L190 400 Z" fill="#000" opacity="0.22"/>
+    <path d="M190 30 L230 0 V370 L190 400 Z" fill="${color}" opacity="0.6"/>
+    <rect x="0" y="30" width="190" height="370" rx="6" fill="url(#boxShade)"/>
+    ${mark(95, 128, 1.3, label)}
+    <text x="95" y="196" text-anchor="middle" ${FONT} font-size="${name.length > 15 ? 19 : 24}" font-weight="700" fill="${label}" letter-spacing="-0.5">${name.split('|')[0]}</text>
+    ${name.includes('|') ? `<text x="95" y="222" text-anchor="middle" ${FONT} font-size="17" font-weight="700" fill="${GOLD}" letter-spacing="2">${name.split('|')[1]}</text>` : ''}
+    <text x="95" y="252" text-anchor="middle" ${FONT} font-size="11" fill="${label}" opacity="0.85" letter-spacing="2">${sub}</text>
+    <rect x="30" y="330" width="130" height="2" fill="${GOLD}"/>
+    <text x="95" y="360" text-anchor="middle" ${FONT} font-size="10" fill="${label}" opacity="0.8" letter-spacing="2">TRANZLIFE BIOSCIENCES</text>
+  </g>`
+    : '';
+  const ix = box ? 380 : 300;
+  return svg(
+    `
+  ${shadow(box ? 300 : 300, 530, box ? 200 : 90)}
+  ${boxEl}
+  <g transform="translate(${ix} 0)">
+    <rect x="-44" y="250" width="88" height="270" rx="44" fill="${color}"/>
+    <rect x="-44" y="250" width="88" height="270" rx="44" fill="url(#shade)"/>
+    <rect x="-44" y="312" width="88" height="6" fill="${GOLD}"/>
+    <rect x="-22" y="196" width="44" height="66" rx="20" fill="#F4F1E6"/>
+    <rect x="-22" y="196" width="44" height="66" rx="20" fill="url(#shadeLight)"/>
+    <g transform="translate(0 420) rotate(-90)">
+      <text text-anchor="middle" ${FONT} font-size="17" font-weight="700" fill="${label}" letter-spacing="1">${name.replace('|', ' ')}</text>
+    </g>
+  </g>
+  `,
+    cylinder('shade', color) +
+      cylinder('shadeLight', '#F4F1E6') +
+      `<linearGradient id="boxShade" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.12"/><stop offset="1" stop-color="#000" stop-opacity="0.12"/></linearGradient>`
+  );
+}
+
 function rollOn({ name, sub, color, band = color, volume = '8 ml', tall = false }) {
   const top = tall ? 70 : 96;
   const shoulder = tall ? 200 : 230;
@@ -160,6 +199,11 @@ const files = {
   'craving-control-gummies.svg': darkJar({ name: 'CRAVING CONTROL GUMMIES', sub: 'FOR HEAVY SMOKERS', color: '#1F4A2E' }),
   'reviva.svg': rollOn({ name: 'Reviva', sub: 'DIABETES &amp; VITALITY', color: '#1E5A2B', band: '#D9822B', volume: '50 ml', tall: true }),
   'liverdetox.svg': syrupBottle({ name: 'LiverDetox', sub: 'LIVER BOOSTER', color: '#6F7F1E' }),
+  'craving-control.svg': inhaler({ name: 'Craving|CONTROL', sub: 'AROMATHERAPY INHALER', color: '#2F8A4C' }),
+  'craving-control-plus.svg': inhaler({ name: 'Craving|PLUS', sub: 'AROMATHERAPY INHALER', color: '#B98C2E' }),
+  'craving-control-gold.svg': inhaler({ name: 'Craving|GOLD', sub: 'AROMATHERAPY INHALER', color: '#1E1E1E', label: GOLD }),
+  'craving-control-night.svg': inhaler({ name: 'Craving|NIGHT', sub: 'AROMATHERAPY INHALER', color: '#5E3D96' }),
+  'breathefree.svg': inhaler({ name: 'BreatheFree', sub: 'AROMATHERAPY INHALER', color: '#1F7A8C' }),
   'cyclerelief.svg': rollOn({ name: 'CycleRelief', sub: 'MENSTRUAL COMFORT', color: '#6E3F9B', band: '#6E3F9B', volume: '8 ml' }),
 };
 

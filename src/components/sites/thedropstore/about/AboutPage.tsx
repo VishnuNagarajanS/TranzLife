@@ -17,7 +17,6 @@ import { Eyebrow, PageSection, SocialsSection, useTextGuide } from '@/components
 import { useScreenTransition } from '@/components/sites/thedropstore/ScreenTransition';
 import { AboutHeroSection } from '@/components/sites/thedropstore/about/AboutHeroSection';
 import { CredentialLogo } from '@/components/sites/thedropstore/CredentialLogos';
-import { RecognitionSection } from '@/components/sites/thedropstore/about/RecognitionSection';
 
 // PageLayout doesn't forward a ref, so its root is located through this marker class.
 const LAYOUT_MARKER = 'about-page-layout';
@@ -371,7 +370,6 @@ export function AboutPage() {
       <ValuesBand />
       <WhatWeDoSection />
       <StrengthsSection />
-      <RecognitionSection />
       <CredentialsSection />
       <JoinSection />
       <MottoSection />

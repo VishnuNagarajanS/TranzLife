@@ -327,10 +327,20 @@
   width: 100%;
   overflow: hidden;
   isolation: isolate;
-  background: linear-gradient(165deg, #e6e9d6 0%, #d8dcc2 48%, #cbd2b4 100%);
+  background-color: var(--color-cream);
   /* GSAP pins wrap the stage in .pin-spacer, which this site sets to pointer-events: none */
   pointer-events: auto;
 }
+/* The sage wall sits on its own layer so it can fade to the page cream when a jar is opened. */
+.products-wheel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(165deg, #e6e9d6 0%, #d8dcc2 48%, #cbd2b4 100%);
+  transition: opacity 0.45s ease;
+}
+.products-wheel[data-flying-out]::before { opacity: 0; }
 .products-wheel[data-flying-out] > * {
   opacity: 0 !important;
   pointer-events: none;

@@ -6,7 +6,7 @@ import { Product } from '@/lib/tranzlife-data';
 import { useUI } from '../state';
 import { useScreenTransition } from '../ScreenTransition';
 import { LeafShadowBackdrop } from './LeafShadowBackdrop';
-import { SPIN_FRAME_COUNT, SPIN_FRAME_SLUGS, getSpinSet, loadSpinSet, nearestFrame, type SpinSet } from './spinFrames';
+import { SPIN_CLIPS, SPIN_FRAME_SLUGS, getSpinSet, loadSpinSet, nearestFrame, spinFrameIndex, type SpinSet } from './spinFrames';
 
 /*
  * Product wheel: ten slots (the range, twice) stand on the rim of a large wheel, so the whole
@@ -21,6 +21,8 @@ const STEP = 360 / SLOTS;
 const SCROLL_TRAVEL_PX = 4000;
 const SMOOTH = 14;
 const SPIN_MS = 2600;
+const JAR_OPEN_MS = 1500;
+const DEFAULT_MS = 900;
 const DRAG_GAIN = 1.15;
 const DRAG_THRESHOLD = 6;
 const RING_TEXT = 'NATURE · SCIENCE · LIFE · ';
@@ -45,10 +47,10 @@ function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration:
   gsap.set(scene, { position: 'fixed', inset: 0, width: '100vw', height: '100lvh', pointerEvents: 'none' });
 
   const tint = document.createElement('div');
-  gsap.set(tint, { position: 'absolute', left: cx - size / 2, top: cy - size / 2, width: size, height: size, borderRadius: size / 2, backgroundColor: product.tint, opacity: 0 });
+  gsap.set(tint, { position: 'absolute', left: cx - size / 2, top: cy - size / 2, width: size, height: size, borderRadius: 18, backgroundColor: product.tint, opacity: 0 });
 
 
-  // PulmoClear spins through its turntable frames (front to back and round again) while it flies; the rest just lean.
+  // Products with turntable frames spin three full turns while they fly; the rest just lean.
   const spinSet = SPIN_FRAME_SLUGS.has(product.slug) ? getSpinSet(product.slug) : null;
   const spinning = !!spinSet && spinSet.width > 0;
   let jar: HTMLImageElement | HTMLCanvasElement;
@@ -69,9 +71,25 @@ function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration:
   stage.setAttribute('data-flying-out', 'true');
 
   const target = Math.min(window.innerHeight * 0.6, window.innerWidth * 0.48);
-  const vars = { ease: 'power4.inOut', duration };
+  // Timeline like the reference: the card pops up and the jar starts spinning in place, then the card grows to fill the screen.
+  const lead = 0.22 * duration;
+  const vars = { ease: 'power4.inOut', duration: duration - lead, delay: lead };
   // Lands leaning left by the same angle the product page starts at, so the hand-off is seamless.
-  gsap.to(jar, { ...vars, rotation: -12 });
+  gsap.to(jar, { ease: 'power2.inOut', duration, rotation: -12 });
+  if (!spinning) {
+    // No turntable frames for this product: fake the turn by squeezing the picture like a card spinning on its axis.
+    const turn = { t: 0 };
+    gsap.to(turn, {
+      t: 3,
+      duration,
+      ease: 'power1.inOut',
+      onUpdate: () => {
+        const x = Math.max(0.12, Math.abs(Math.cos(turn.t * Math.PI)));
+        gsap.set(jar, { scaleX: x });
+      },
+      onComplete: () => void gsap.set(jar, { scaleX: 1 }),
+    });
+  }
   if (spinning && spinSet) {
     const ctx = (jar as HTMLCanvasElement).getContext('2d');
     const first = nearestFrame(spinSet, 0);
@@ -80,10 +98,9 @@ function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration:
     gsap.to(turn, {
       t: 1,
       duration,
-      ease: 'power2.inOut',
+      ease: 'power1.inOut',
       onUpdate: () => {
-        const turns = 1 - Math.abs(turn.t * 2 - 1);
-        const frame = nearestFrame(spinSet, Math.round(turns * (SPIN_FRAME_COUNT - 1)));
+        const frame = nearestFrame(spinSet, spinFrameIndex(product.slug, SPIN_CLIPS[product.slug].loop ? turn.t * 3 : turn.t * 6));
         if (frame && ctx) {
           ctx.clearRect(0, 0, spinSet.width, spinSet.height);
           ctx.drawImage(frame.image, 0, 0);
@@ -92,7 +109,9 @@ function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration:
     });
   }
   gsap.to(jar, { ...vars, left: (window.innerWidth - target) / 2, top: (window.innerHeight - target) / 2, width: target, height: target });
-  gsap.to(tint, { ...vars, opacity: 1, left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, borderRadius: 0 });
+  // Like the reference: a rounded card pops up behind the jar, then grows to fill the screen as the jar spins to the centre.
+  gsap.to(tint, { opacity: 1, duration: 0.18 * duration, ease: 'none' });
+  gsap.to(tint, { ...vars, left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, borderRadius: 0 });
   gsap.to('[data-nav-background-color]', { ...vars, backgroundColor: product.tint });
   // The product page takes over this scene once its own image is up (so the jar never blinks); this is only a fallback.
   window.setTimeout(() => scene.remove(), duration * 1000 + 4000);
@@ -222,10 +241,11 @@ export function ProductsWheel({ products, ...rest }: { products: Product[] } & R
         }
         const set = sets[i];
         if (!set) return;
-        // Front-facing at the top; the jar turns away and back as it travels round the rim.
-        const phase = Math.abs(delta) / 120 + spin * 2;
-        const turns = 1 - Math.abs((((phase % 2) + 2) % 2) - 1);
-        const idx = clamp(Math.floor(turns * SPIN_FRAME_COUNT), 0, SPIN_FRAME_COUNT - 1);
+        // Front-facing at the top. A full-turn clip keeps rotating as the jar travels round the rim (and once more on hover);
+        // the others turn away and back.
+        const slug = items[i].slug;
+        const phase = SPIN_CLIPS[slug].loop ? delta / 170 + spin : Math.abs(delta) / 120 + spin * 2;
+        const idx = spinFrameIndex(slug, phase);
         const frame = nearestFrame(set, idx);
         if (frame && frame.index !== lastFrame[i]) {
           const ctx = canvases[i]?.getContext('2d');
@@ -252,6 +272,20 @@ export function ProductsWheel({ products, ...rest }: { products: Product[] } & R
       }
     };
     let wheelTimer = 0;
+    // A jar click plays the longer open animation; ordinary links keep the short transition.
+    let resetTimer = 0;
+    const onJarDown = (event: PointerEvent) => {
+      if (!(event.target as Element | null)?.closest?.('.products-wheel__bottle, .products-wheel__cta')) return;
+      window.clearTimeout(resetTimer);
+      dispatch({ type: 'setScreenTransitionDuration', payload: JAR_OPEN_MS });
+    };
+    const onJarUp = () => {
+      window.clearTimeout(resetTimer);
+      resetTimer = window.setTimeout(() => dispatch({ type: 'setScreenTransitionDuration', payload: DEFAULT_MS }), 700);
+    };
+    window.addEventListener('pointerdown', onJarDown, true);
+    window.addEventListener('pointerup', onJarUp, true);
+    window.addEventListener('pointercancel', onJarUp, true);
     const onPointerDown = (event: PointerEvent) => {
       dragging = false;
       moved = false;
@@ -314,7 +348,7 @@ export function ProductsWheel({ products, ...rest }: { products: Product[] } & R
       if (hit.classList.contains('products-wheel__bottle')) {
         index = bottles.indexOf(hit as HTMLAnchorElement);
         const delta = wrap180(index * STEP + scrollA + dragA);
-        if (Math.abs(delta) > STEP / 2) {
+        if (Math.abs(delta) > STEP * 0.75) {
           event.preventDefault();
           event.stopPropagation();
           dragA -= Math.round(delta / STEP) * STEP;
@@ -384,6 +418,11 @@ export function ProductsWheel({ products, ...rest }: { products: Product[] } & R
       enters.forEach((fn) => fn());
       window.removeEventListener('resize', layout);
       window.removeEventListener('click', onClickCapture, true);
+      window.removeEventListener('pointerdown', onJarDown, true);
+      window.removeEventListener('pointerup', onJarUp, true);
+      window.removeEventListener('pointercancel', onJarUp, true);
+      window.clearTimeout(resetTimer);
+      dispatch({ type: 'setScreenTransitionDuration', payload: DEFAULT_MS });
       drag.removeEventListener('wheel', onWheel);
       drag.removeEventListener('pointerdown', onPointerDown);
       drag.removeEventListener('pointermove', onPointerMove);

@@ -15,7 +15,6 @@ import { Text } from './Text';
 import { Icon } from './Icon';
 import { LogoWide } from './Logo';
 import { CredentialLogoStrip } from './CredentialLogos';
-import ShinyText from '@/components/reactbits/ShinyText/ShinyText';
 
 /* ------------------------------------------------------------ Portal --- */
 
@@ -157,19 +156,7 @@ function PageFooter() {
             breakpoints={{ none: 'text-[3rem]' }}
             className="w-full xl:w-8/12 2xl:w-9/12 whitespace-pre-line"
           >
-            {/* React Bits ShinyText: a slow warm-gold sheen sweeps across the cream headline. */}
-            <ShinyText
-              text={footer.title}
-              color="#f2f4e8"
-              shineColor="#e9cf8a"
-              speed={3.2}
-              delay={2.5}
-              angle={115}
-              shineWidth={28}
-              softness={0.85}
-              glow={0.35}
-              direction="right"
-            />
+            {footer.title}
           </Text>
           <div className="grid grid-cols-12 gap-6">
             <div className="flex flex-col gap-8 col-span-full lg:col-start-1 lg:col-end-6 lg:py-8">

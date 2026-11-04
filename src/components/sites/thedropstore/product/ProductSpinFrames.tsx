@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/dropstore/gsap';
-import { SPIN_FRAME_COUNT, getSpinSet, loadSpinSet, nearestFrame } from '../products/spinFrames';
+import { SPIN_CLIPS, getSpinSet, loadSpinSet, nearestFrame } from '../products/spinFrames';
 
 /**
  * The product turns as the page scrolls through the product block. Frames are pre-decoded images
@@ -54,7 +54,8 @@ export function ProductSpinFrames({ slug, label }: { slug: string; label: string
 
     const tick = () => {
       if (!visible) return;
-      const target = progress * (SPIN_FRAME_COUNT - 1);
+      // Over the page a full-turn clip makes one whole revolution; the others run front to back.
+      const target = progress * (SPIN_CLIPS[slug].count - 1);
       current += (target - current) * 0.07;
       if (Math.abs(target - current) < 0.05) current = target;
       tilt += (tiltAt(progress) - tilt) * 0.08;
@@ -80,7 +81,7 @@ export function ProductSpinFrames({ slug, label }: { slug: string; label: string
       role="img"
       aria-label={label}
       className="block mx-auto pointer-events-none select-none"
-      style={{ height: 'min(60svh, 48vw)', aspectRatio: '455 / 880' }}
+      style={{ height: 'min(60svh, 48vw)', aspectRatio: String(SPIN_CLIPS[slug].aspect) }}
     />
   );
 }
