@@ -100,6 +100,12 @@ export function ScreenTransitionProvider({ children }: { children: React.ReactNo
     const onClick = (event: MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const anchor = (event.target as Element | null)?.closest?.('a');
+      // The click that ends a drag (e.g. the product slider) is not a request to open the link.
+      if (anchor?.closest('[data-just-dragged]')) {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
       if (!anchor || anchor.target === '_blank' || anchor.hasAttribute('download')) return;
       const href = anchor.getAttribute('href');
       if (!href || !href.startsWith('/') || /\.[a-z0-9]+$/i.test(href.split('#')[0])) return;
