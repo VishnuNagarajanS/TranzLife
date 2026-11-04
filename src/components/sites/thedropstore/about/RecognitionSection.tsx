@@ -10,6 +10,10 @@ import { Eyebrow, PageSection } from '../sections';
 export function RecognitionSection() {
   const { about } = siteData;
   const [first, ...rest] = about.events;
+  // The big photo plus four beside it fill the grid; any photos left over sit in a centred row below
+  // (same width as a grid column) instead of leaving an empty gap at the end of a row.
+  const beside = rest.slice(0, 4);
+  const leftover = rest.slice(4);
   return (
     <PageSection className="relative bg-white py-24 flex flex-col gap-12">
       <div className="grid grid-cols-12 gap-6 items-end">
@@ -23,11 +27,24 @@ export function RecognitionSection() {
           {about.recognitionText}
         </Text>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <EventPhoto event={first} className="col-span-2 row-span-2 aspect-[4/3] md:aspect-auto" />
-        {rest.map((event) => (
-          <EventPhoto key={event.image} event={event} className="aspect-[4/5]" />
-        ))}
+      <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <EventPhoto event={first} className="col-span-2 row-span-2 aspect-[4/3] md:aspect-auto" />
+          {beside.map((event) => (
+            <EventPhoto key={event.image} event={event} className="aspect-[4/5]" />
+          ))}
+        </div>
+        {leftover.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-4">
+            {leftover.map((event) => (
+              <EventPhoto
+                key={event.image}
+                event={event}
+                className="aspect-[4/5] w-[calc((100%-1rem)/2)] md:w-[calc((100%-3rem)/4)]"
+              />
+            ))}
+          </div>
+        )}
       </div>
     </PageSection>
   );
