@@ -1,0 +1,11 @@
+.productMoreSection {
+  --product-tile-width: 80vw;
+  --product-tile-height: 80vw;
+}
+
+@media (min-width: 768px) {
+  .productMoreSection {
+    --product-tile-width: clamp(450px, 30vw, 600px);
+    --product-tile-height: clamp(470px, 32vw, 620px);
+  }
+}

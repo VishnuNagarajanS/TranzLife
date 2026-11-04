@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="1200" height="1200">
+<defs>
+  <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+  <linearGradient id="boxShade" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.06"/></linearGradient>
+</defs>
+
+  <ellipse cx="300" cy="528" rx="170" ry="20.4" fill="#163323" opacity="0.18" filter="url(#blur)"/>
+  <path d="M160 100 L196 72 H462 L426 100 Z" fill="#E9EDE0"/>
+  <path d="M426 100 L462 72 V488 L426 516 Z" fill="#1E5A2B"/>
+  <path d="M426 100 L462 72 V488 L426 516 Z" fill="#000" opacity="0.18"/>
+  <rect x="160" y="100" width="266" height="416" fill="#FBFBF5"/>
+  <rect x="160" y="100" width="266" height="416" fill="url(#boxShade)"/>
+  
+  <g transform="translate(293 150) scale(1.1)" fill="none" stroke-linecap="round" stroke-width="3.2">
+    <path d="M0 0 C-5 -7 -9.5 -8 -13 -8 A8 8 0 0 0 -13 8 C-9.5 8 -5 7 0 0" stroke="#1E5A2B"/>
+    <path d="M0 0 C5 7 9.5 8 13 8 A8 8 0 0 0 13 -8 C9.5 -8 5 -7 0 0" stroke="#C49A3C"/>
+    <path d="M0 0 V-22" stroke="#1E5A2B" stroke-width="2.4"/>
+    <circle cx="0" cy="-26" r="6" fill="#1E5A2B" stroke="none"/>
+  </g>
+  <text x="293" y="196" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" fill="#1E5A2B" letter-spacing="3">TRANZLIFE</text>
+  <text x="293" y="234" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="800" fill="#1E5A2B" letter-spacing="-0.5">LUNG BOOSTER</text>
+  <rect x="200" y="246" width="186" height="34" rx="17" fill="#1E5A2B"/>
+  <text x="293" y="270" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="21" font-weight="700" fill="#fff">PulmoClear</text>
+  <text x="293" y="304" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="800" fill="#1E5A2B" letter-spacing="2">GUMMIES</text>
+  <g transform="translate(293 380)" fill="#1E5A2B" opacity="0.9">
+    <path d="M-6 -48v34M-6 -14c-8 8-16 12-22 12M6 -14c8 8 16 12 22 12M6 -48v34" stroke="#1E5A2B" stroke-width="4" fill="none"/>
+    <path d="M-12 -36c-34-6-54 30-54 64 0 22 8 34 24 34 22 0 30-14 30-36V-26c0-6-0-9-0-10Z"/>
+    <path d="M12 -36c34-6 54 30 54 64 0 22-8 34-24 34-22 0-30-14-30-36V-26c0-6 0-9 0-10Z"/>
+  </g>
+  <rect x="160" y="456" width="266" height="60" fill="#1E5A2B"/>
+  <text x="293" y="480" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="700" fill="#F2D27A" letter-spacing="2">NATURAL BERRY FLAVOUR</text>
+  <text x="293" y="502" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#fff" letter-spacing="1">Net Quantity: 60 Gummies</text>
+  
+</svg>

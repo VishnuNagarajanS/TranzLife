@@ -1,0 +1,15 @@
+.image {
+  height: 300px;
+}
+
+@media (min-width: 1024px) {
+  .image {
+    height: calc(100vh - var(--nav-space-top));
+    height: calc(100lvh - var(--nav-space-top));
+  }
+
+  .text {
+    min-height: 100vh;
+    min-height: 100lvh;
+  }
+}

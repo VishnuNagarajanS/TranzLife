@@ -1,0 +1,1221 @@
+{
+  "brand": {
+    "company": "Tranz Life Biosciences Pvt. Ltd.",
+    "shortName": "TranzLife",
+    "tagline": "Innovating Life Beyond Limits",
+    "motto": "From the roots of Nature to the infinity of Science, TranzLife is shaping the future of Life.",
+    "url": "https://www.tranzlife.in"
+  },
+  "navigation": {
+    "links": [
+      {
+        "url": "/products",
+        "text": "Products",
+        "id": "nav-products"
+      },
+      {
+        "url": "/about",
+        "text": "Our Story",
+        "id": "nav-about"
+      },
+      {
+        "url": "/science",
+        "text": "Science",
+        "id": "nav-science"
+      },
+      {
+        "url": "/contact",
+        "text": "Contact",
+        "id": "nav-contact"
+      }
+    ]
+  },
+  "home": {
+    "title": "Innovating life\nbeyond limits.",
+    "titleSmall": "Innovating\nlife beyond\nlimits.",
+    "subtitle": "From the roots of Nature to the infinity of Science.",
+    "heroVideo": "",
+    "heroVideoPoster": "",
+    "cta": "Explore our products",
+    "ctaSecondary": "Our story",
+    "intro": {
+      "eyebrow": "Who we are",
+      "text": "Tranz Life Biosciences is an innovation-led life sciences company dedicated to discovering, developing and delivering natural, safe and effective solutions that support health and well-being.",
+      "facts": [
+        {
+          "value": "5",
+          "label": "market-ready products"
+        },
+        {
+          "value": "14",
+          "label": "formulations in the pipeline"
+        },
+        {
+          "value": "100%",
+          "label": "Ayurvedic and natural actives"
+        },
+        {
+          "value": "Chennai",
+          "label": "made in India"
+        }
+      ]
+    },
+    "bandEyebrow": "Nature meets science",
+    "bandTitle": "Rooted in nature.\nDriven by science.",
+    "bandText": "Rooted in the wisdom of nature and driven by cutting-edge science, we develop high-quality nutraceuticals, herbal, wellness and eco-friendly products that make a meaningful difference in people's lives.",
+    "triptych": [
+      {
+        "title": "Nature",
+        "text": "Herbs generations have trusted.",
+        "image": "/tranzlife/cards/nature.jpg",
+        "video": "/tranzlife/videos/nature.mp4"
+      },
+      {
+        "title": "Science",
+        "text": "Research-driven formulations.",
+        "image": "/tranzlife/cards/science.jpg",
+        "video": "/tranzlife/videos/science.mp4"
+      },
+      {
+        "title": "Life",
+        "text": "Wellness for every generation.",
+        "image": "/tranzlife/cards/life.jpg",
+        "video": "/tranzlife/videos/life.mp4"
+      }
+    ],
+    "whatWeDo": [
+      {
+        "title": "Innovate",
+        "icon": "innovate",
+        "text": "Research-driven formulations with a focus on efficacy and safety."
+      },
+      {
+        "title": "Develop",
+        "icon": "develop",
+        "text": "Advanced R&D and modern technology to create superior products."
+      },
+      {
+        "title": "Deliver",
+        "icon": "deliver",
+        "text": "High-quality manufacturing and stringent quality standards."
+      },
+      {
+        "title": "Impact",
+        "icon": "impact",
+        "text": "Empowering healthier lives while promoting sustainability and ethical practices."
+      }
+    ],
+    "story": {
+      "eyebrow": "Inside every cell",
+      "beforeImage": "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260609_195923_b0ba8ace-1d1d-4f2c-9a28-1ab84b330680.png",
+      "afterImage": "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260609_201152_bba90a12-bf12-459f-91f0-51f237dbaf3b.png",
+      "hint": "Move your cursor to see what nature gives back",
+      "stages": [
+        {
+          "title": "What your body faces.",
+          "text": "Smoke, polluted air, toxins and everyday stress. Day after day, the body absorbs it — all the way down to the cell.",
+          "tags": [
+            "Smoking",
+            "Polluted air",
+            "Toxins",
+            "Stress",
+            "Processed food"
+          ]
+        },
+        {
+          "title": "Nature has answers.",
+          "text": "For centuries, Ayurveda has turned to plants like Tulsi, Vasaka, Guduchi and Amla. Science helps us understand them — and use them well.",
+          "tags": []
+        },
+        {
+          "title": "What nature gives back.",
+          "text": "Formulations rooted in nature and driven by science, to support your lungs, your liver and your everyday balance.",
+          "tags": [
+            "Breathe",
+            "Cleanse",
+            "Balance"
+          ]
+        }
+      ]
+    },
+    "focusEyebrow": "Three focus areas",
+    "focusTitle": "Care for the body,\none system at a time.",
+    "ingredientsEyebrow": "Powered by nature. Proven by science.",
+    "ingredientsTitle": "What goes inside",
+    "ingredients": [
+      {
+        "name": "Vasaka",
+        "latin": "Adhatoda vasica",
+        "role": "Traditionally used for respiratory support.",
+        "products": [
+          "PulmoClear"
+        ]
+      },
+      {
+        "name": "Tulsi",
+        "latin": "Ocimum sanctum",
+        "role": "The holy basil of Ayurveda, for lungs and immunity.",
+        "products": [
+          "PulmoClear",
+          "Craving Control"
+        ]
+      },
+      {
+        "name": "Mulethi",
+        "latin": "Glycyrrhiza glabra",
+        "role": "Liquorice root, soothing for the throat and airways.",
+        "products": [
+          "PulmoClear"
+        ]
+      },
+      {
+        "name": "Bhumyamalaki",
+        "latin": "Phyllanthus niruri",
+        "role": "A classical Ayurvedic herb for liver care.",
+        "products": [
+          "LiverDetox"
+        ]
+      },
+      {
+        "name": "Kalmegh",
+        "latin": "Andrographis paniculata",
+        "role": "The 'king of bitters', used for liver support.",
+        "products": [
+          "LiverDetox"
+        ]
+      },
+      {
+        "name": "Guduchi",
+        "latin": "Tinospora cordifolia",
+        "role": "Known as 'Amrita', for immunity and detoxification.",
+        "products": [
+          "LiverDetox",
+          "PulmoClear"
+        ]
+      },
+      {
+        "name": "Amla",
+        "latin": "Emblica officinalis",
+        "role": "Rich in Vitamin C, a natural antioxidant.",
+        "products": [
+          "LiverDetox"
+        ]
+      },
+      {
+        "name": "Turmeric",
+        "latin": "Curcuma longa",
+        "role": "Golden spice with antioxidant properties.",
+        "products": [
+          "LiverDetox",
+          "PulmoClear"
+        ]
+      },
+      {
+        "name": "Ashwagandha",
+        "latin": "Withania somnifera",
+        "role": "An adaptogen that helps the body manage stress.",
+        "products": [
+          "Craving Control"
+        ]
+      },
+      {
+        "name": "Black Pepper",
+        "latin": "Piper nigrum",
+        "role": "Enhances absorption of the other actives.",
+        "products": [
+          "LiverDetox",
+          "PulmoClear",
+          "Craving Control"
+        ]
+      },
+      {
+        "name": "Dill oil",
+        "latin": "Anethum graveolens",
+        "role": "A warming essential oil used in massage.",
+        "products": [
+          "CycleRelief",
+          "Reviva"
+        ]
+      },
+      {
+        "name": "Eucalyptus oil",
+        "latin": "Eucalyptus globulus",
+        "role": "A fresh essential oil that soothes and relaxes.",
+        "products": [
+          "CycleRelief",
+          "Reviva"
+        ]
+      }
+    ],
+    "futureEyebrow": "The future of life",
+    "futureTitle": "Advancing genetic insights.\nDiscovering biomarkers.\nTransforming futures.",
+    "futureImage": "/tranzlife/brochure/dna-face.png",
+    "partnerTitle": "Grow with TranzLife.",
+    "partnerText": "We are looking for distributors, retailers and research partners who believe nature and science belong together.",
+    "trustTitle": "Made with care",
+    "trust": [
+      {
+        "label": "Made in India",
+        "icon": "india",
+        "show": true
+      },
+      {
+        "label": "Natural ingredients",
+        "icon": "leaf",
+        "show": true
+      },
+      {
+        "label": "Ayurvedic wisdom",
+        "icon": "mortar",
+        "show": true
+      },
+      {
+        "label": "No added colours",
+        "icon": "drop",
+        "show": true
+      },
+      {
+        "label": "No added sugar",
+        "icon": "sprout",
+        "show": true
+      },
+      {
+        "label": "GMP certified",
+        "icon": "shield",
+        "show": false
+      },
+      {
+        "label": "ISO 9001:2015",
+        "icon": "badge",
+        "show": false
+      }
+    ]
+  },
+  "productsPage": {
+    "title": "Meet the five.",
+    "titleSmall": "Meet\nthe five.",
+    "subtitle": "Five market-ready formulations, from lung care to everyday balance."
+  },
+  "products": [
+    {
+      "id": "p-liverdetox",
+      "slug": "liverdetox",
+      "title": "LiverDetox",
+      "subtitle": "Liver Booster · Polyherbal concoction",
+      "category": "Ayurvedic Proprietary Medicine.",
+      "amount": "500 ml",
+      "flavour": "Polyherbal syrup",
+      "price": "",
+      "accent": "#6F7F1E",
+      "tint": "#EDE8C9",
+      "image": "/tranzlife/packs/liverdetox.svg",
+      "introTitle": "Detoxifies.\nProtects.\nRejuvenates.",
+      "retailSlang": "Liver booster",
+      "description": "LiverDetox is a polyherbal concoction of eleven classical Ayurvedic herbs, led by Bhumyamalaki, Kalmegh and Kutki. It supports natural liver detoxification, healthy liver function and comfortable digestion, as part of a balanced daily routine.",
+      "promotionText": "Eleven herbs.\nOne daily ritual.",
+      "benefits": [
+        {
+          "title": "Supports liver detoxification",
+          "icon": "liver"
+        },
+        {
+          "title": "Promotes liver health",
+          "icon": "shield"
+        },
+        {
+          "title": "Powerful antioxidant",
+          "icon": "spark"
+        },
+        {
+          "title": "Improves digestion",
+          "icon": "leaf"
+        },
+        {
+          "title": "Enhances vitality",
+          "icon": "sun"
+        }
+      ],
+      "detailsTitle": "Composition · each 10 ml",
+      "details": {
+        "Bhumyamalaki (Phyllanthus niruri)": "500 mg",
+        "Kalmegh (Andrographis paniculata)": "400 mg",
+        "Kutki (Picrorhiza kurroa)": "400 mg",
+        "Punarnava (Boerhavia diffusa)": "300 mg",
+        "Bhringraj (Eclipta alba)": "300 mg",
+        "Daruharidra (Berberis aristata)": "200 mg",
+        "Guduchi (Tinospora cordifolia)": "200 mg",
+        "Amla (Emblica officinalis)": "200 mg",
+        "Haritaki (Terminalia chebula)": "200 mg",
+        "Turmeric (Curcuma longa)": "150 mg",
+        "Black Pepper (Piper nigrum)": "50 mg"
+      },
+      "howToUse": [
+        {
+          "title": "Shake well",
+          "text": "Shake the bottle well before use.",
+          "icon": "shake"
+        },
+        {
+          "title": "Measure 10 ml",
+          "text": "Adults: 10 ml (2 teaspoons).",
+          "icon": "cup"
+        },
+        {
+          "title": "Twice a day",
+          "text": "Morning and evening.",
+          "icon": "clock"
+        },
+        {
+          "title": "After meals",
+          "text": "Take after food.",
+          "icon": "meal"
+        }
+      ],
+      "caution": "Not recommended for pregnant or lactating women. Consult your physician if you are under medication.",
+      "storage": "Store in a cool, dry place away from direct sunlight. Refrigerate after opening.",
+      "comments": [],
+      "whyItWorks": [
+        {
+          "title": "Classical liver herbs",
+          "text": "Bhumyamalaki, Kalmegh and Kutki have long been used in Ayurveda to support the liver."
+        },
+        {
+          "title": "Eleven in balance",
+          "text": "A polyherbal formula where each herb supports the others, from Punarnava to Haritaki."
+        },
+        {
+          "title": "Better absorption",
+          "text": "Black pepper is added to help the body absorb the herbal actives."
+        }
+      ],
+      "natureTitle": "Powered\nby nature",
+      "natureAmount": "11",
+      "natureAmountLabel": "herbs",
+      "natureAmountDescription": "Classical Ayurvedic herbs in every 10 ml.",
+      "natureVisual": "list",
+      "natureDescription": "Bhumyamalaki, Kalmegh, Kutki, Punarnava, Bhringraj, Daruharidra, Guduchi, Amla, Haritaki, Turmeric and Black Pepper. Natural ingredients, Ayurvedic wisdom, no added colours and no added sugar.",
+      "focus": "cleanse"
+    },
+    {
+      "id": "p-pulmoclear",
+      "slug": "pulmoclear",
+      "title": "PulmoClear",
+      "subtitle": "Lung Booster Gummies",
+      "category": "This is a Nutraceutical. Not for medicinal use.",
+      "amount": "60 gummies",
+      "flavour": "Natural berry flavour",
+      "price": "",
+      "accent": "#2F7D46",
+      "tint": "#DCEAD3",
+      "image": "/tranzlife/packs/pulmoclear.svg",
+      "introTitle": "Detoxifies.\nCleanses.\nStrengthens.",
+      "retailSlang": "Lung booster",
+      "description": "PulmoClear Lung Booster Gummies bring together Vasaka, Tulsi, Mulethi, Turmeric and Giloy with Vitamin C, Vitamin D3 and Zinc in a natural berry-flavoured gummy. They support respiratory health naturally — helping cleanse the lungs, soothe the airways and strengthen the body's natural defences.",
+      "promotionText": "Breathe deeper.\nTwo gummies at a time.",
+      "benefits": [
+        {
+          "title": "Lung detoxification",
+          "icon": "lungs"
+        },
+        {
+          "title": "Supports respiratory health",
+          "icon": "shield"
+        },
+        {
+          "title": "Natural immunity support",
+          "icon": "leaf"
+        },
+        {
+          "title": "Relieves congestion",
+          "icon": "breath"
+        },
+        {
+          "title": "Antioxidant protection",
+          "icon": "spark"
+        }
+      ],
+      "detailsTitle": "Composition · each gummy",
+      "details": {
+        "Vasaka (Adhatoda vasica) leaf extract": "100 mg",
+        "Tulsi (Ocimum sanctum) extract": "100 mg",
+        "Mulethi (Glycyrrhiza glabra) root extract": "100 mg",
+        "Turmeric (Curcuma longa) extract": "80 mg",
+        "Giloy (Tinospora cordifolia) extract": "80 mg",
+        "Black Pepper (Piper nigrum) extract": "50 mg",
+        "Vitamin C": "40 mg",
+        "Vitamin D3": "10 mcg",
+        "Zinc": "5 mg"
+      },
+      "howToUse": [
+        {
+          "title": "Take two",
+          "text": "Adults: 2 gummies.",
+          "icon": "two"
+        },
+        {
+          "title": "Twice a day",
+          "text": "Morning and evening.",
+          "icon": "clock"
+        },
+        {
+          "title": "After meals",
+          "text": "Take after food.",
+          "icon": "meal"
+        },
+        {
+          "title": "Chew well",
+          "text": "Chew well before swallowing.",
+          "icon": "berry"
+        }
+      ],
+      "caution": "Not recommended for pregnant or lactating women. Consult your physician if you are under medication. Do not exceed the recommended daily usage.",
+      "storage": "Store in a cool, dry place away from direct sunlight. Keep out of reach of children.",
+      "comments": [],
+      "whyItWorks": [
+        {
+          "title": "Herbs for the airways",
+          "text": "Vasaka, Tulsi and Mulethi are time-honoured Ayurvedic herbs for respiratory wellness."
+        },
+        {
+          "title": "Modern nutrition",
+          "text": "Vitamin C, Vitamin D3 and Zinc add everyday immunity support."
+        },
+        {
+          "title": "Easy to keep up",
+          "text": "A berry gummy that is gelatin free, with no added colours or sugar."
+        }
+      ],
+      "natureTitle": "Powered\nby nature",
+      "natureAmount": "9",
+      "natureAmountLabel": "actives",
+      "natureAmountDescription": "Herbs, vitamins and minerals in every gummy.",
+      "natureVisual": "lungs",
+      "natureDescription": "Six Ayurvedic extracts and three essential nutrients, each with a role: Vasaka, Tulsi and Mulethi for the airways, Turmeric and Giloy for antioxidant and immune care, and Black Pepper to help absorption.",
+      "focus": "breathe"
+    },
+    {
+      "id": "p-craving-control",
+      "slug": "craving-control-gummies",
+      "title": "Craving Control",
+      "subtitle": "PulmoClear gummies for heavy smokers",
+      "category": "Nutraceutical. Not for medicinal use. Not a nicotine replacement product.",
+      "amount": "60 gummies",
+      "flavour": "Dual-action gummies",
+      "price": "",
+      "accent": "#1F5A35",
+      "tint": "#D7E3CF",
+      "image": "/tranzlife/packs/craving-control-gummies.svg",
+      "introTitle": "Craving control.\nLife in control.",
+      "retailSlang": "For heavy smokers",
+      "description": "A premium, science-backed formula designed for heavy smokers who are ready to quit. Its dual action combines a craving control complex — to help reduce urges and withdrawal discomfort — with a lung detox complex that supports natural detoxification and respiratory wellness, while keeping you calm and balanced.",
+      "promotionText": "Stronger today.\nSmoke-free tomorrow.",
+      "benefits": [
+        {
+          "title": "Powerful craving control",
+          "icon": "hand"
+        },
+        {
+          "title": "Calm mind & stress support",
+          "icon": "brain"
+        },
+        {
+          "title": "Lung detox & recovery",
+          "icon": "lungs"
+        },
+        {
+          "title": "Antioxidant protection",
+          "icon": "shield"
+        },
+        {
+          "title": "Natural & non-addictive",
+          "icon": "leaf"
+        }
+      ],
+      "detailsTitle": "Key ingredients",
+      "details": {
+        "Ashwagandha": "Reduces stress, calms the mind",
+        "L-Theanine": "Relaxation and focus",
+        "Black Pepper extract": "Helps curb nicotine urges",
+        "Tulsi & Vasaka extracts": "Lung detox and respiratory health",
+        "Vitamin C & Zinc": "Immunity and oxidative stress"
+      },
+      "howToUse": [
+        {
+          "title": "Take",
+          "text": "2 gummies daily after meals.",
+          "icon": "two"
+        },
+        {
+          "title": "Relax",
+          "text": "Let the natural ingredients work on your cravings and stress.",
+          "icon": "pause"
+        },
+        {
+          "title": "Breathe better",
+          "text": "Detox, heal and enjoy a smoke-free life.",
+          "icon": "lungs"
+        }
+      ],
+      "caution": "Not recommended for pregnant or lactating women. Consult your physician if you are under medication. Talk to a doctor for support with quitting tobacco.",
+      "storage": "Store in a cool, dry place away from direct sunlight. Keep out of reach of children.",
+      "comments": [],
+      "whyItWorks": [
+        {
+          "title": "Two complexes, one gummy",
+          "text": "A craving control complex and a lung detox complex work side by side."
+        },
+        {
+          "title": "Calm, not cravings",
+          "text": "Ashwagandha and L-Theanine help manage the stress, anxiety and irritability of quitting."
+        },
+        {
+          "title": "No nicotine",
+          "text": "No tobacco, no nicotine, no addictive chemicals. Gluten free and gentle on the stomach."
+        }
+      ],
+      "natureTitle": "Made for\nheavy smokers",
+      "natureAmount": "10+",
+      "natureAmountLabel": "a day",
+      "natureAmountDescription": "For people who smoke more than 10 cigarettes or beedis a day.",
+      "natureVisual": "list",
+      "natureDescription": "For people with strong and frequent cravings, who have tried quitting before, who feel stress, irritability and restlessness — and who are looking for a natural, effective and premium solution.",
+      "focus": "breathe",
+      "programme": [
+        {
+          "week": "Week 1",
+          "title": "Control cravings",
+          "text": "Start with 2 gummies daily after meals and notice when your cravings come."
+        },
+        {
+          "week": "Week 2",
+          "title": "Reduce smoking frequency",
+          "text": "Let the calm-mind complex take the edge off and cut down the number of cigarettes."
+        },
+        {
+          "week": "Week 3",
+          "title": "Build new habits",
+          "text": "Replace old triggers with new routines — a walk, water, slow breathing."
+        },
+        {
+          "week": "Week 4",
+          "title": "Move towards smoke-free living",
+          "text": "Breathe freely. Live fully. You deserve a smoke-free life."
+        }
+      ]
+    },
+    {
+      "id": "p-reviva",
+      "slug": "reviva",
+      "title": "Reviva",
+      "subtitle": "Massage roll-on for diabetes & vitality",
+      "category": "Massage roll-on. For external use only. Not a substitute for prescribed diabetes medication.",
+      "amount": "50 ml roll-on",
+      "flavour": "Massage roll-on",
+      "price": "₹399",
+      "accent": "#D9822B",
+      "tint": "#F5E3C8",
+      "image": "/tranzlife/packs/reviva.svg",
+      "introTitle": "Balance.\nRestore.\nRevitalize.",
+      "retailSlang": "The spirit of organics",
+      "description": "Reviva is a natural massage roll-on with dill and eucalyptus essential oils, made as everyday support for people managing diabetes. A gentle morning ritual around the belly button, designed to support circulation, comfort and overall vitality — alongside the care plan your doctor recommends.",
+      "promotionText": "A morning ritual\nfor everyday vitality.",
+      "benefits": [
+        {
+          "title": "Supports healthy blood sugar levels",
+          "icon": "drop"
+        },
+        {
+          "title": "Circulation & nerve strength",
+          "icon": "heart"
+        },
+        {
+          "title": "Relieves pain & discomfort",
+          "icon": "hand"
+        },
+        {
+          "title": "Immunity & vitality",
+          "icon": "shield"
+        },
+        {
+          "title": "Overall well-being",
+          "icon": "sun"
+        }
+      ],
+      "detailsTitle": "Ingredients",
+      "details": {
+        "Dill essential oil": "Anethum graveolens",
+        "Eucalyptus essential oil": "Eucalyptus globulus",
+        "Net volume": "50 ml",
+        "MRP": "₹399 (incl. of all taxes)",
+        "Shelf life": "30 months from manufacture"
+      },
+      "howToUse": [
+        {
+          "title": "Roll",
+          "text": "Roll gently around the belly button.",
+          "icon": "roll"
+        },
+        {
+          "title": "Morning",
+          "text": "Apply every morning on an empty stomach.",
+          "icon": "sun"
+        },
+        {
+          "title": "Daily",
+          "text": "Use daily for best results.",
+          "icon": "calendar"
+        }
+      ],
+      "caution": "For external use only. Avoid contact with eyes. Keep out of reach of children. Continue any medication prescribed by your doctor.",
+      "storage": "Store in a cool, dry place.",
+      "comments": [],
+      "whyItWorks": [
+        {
+          "title": "Essential oils",
+          "text": "Dill and eucalyptus oils have long been used in massage for comfort and warmth."
+        },
+        {
+          "title": "A simple ritual",
+          "text": "A few seconds every morning — no tablets, no mess."
+        },
+        {
+          "title": "100% natural",
+          "text": "A short, plant-based ingredient list you can trust."
+        }
+      ],
+      "natureTitle": "The spirit\nof organics",
+      "natureAmount": "2",
+      "natureAmountLabel": "essential oils",
+      "natureAmountDescription": "Dill and eucalyptus, nothing more.",
+      "natureVisual": "list",
+      "natureDescription": "A 100% natural product with dill and eucalyptus essential oils in a 50 ml massage roll-on. Balance, restore and revitalize — every morning.",
+      "focus": "balance"
+    },
+    {
+      "id": "p-cyclerelief",
+      "slug": "cyclerelief",
+      "title": "CycleRelief",
+      "subtitle": "Roll-on for menstrual comfort",
+      "category": "Roll-on. 100% natural product. For external use only.",
+      "amount": "8 ml roll-on",
+      "flavour": "Roll-on",
+      "price": "",
+      "accent": "#7A4BA6",
+      "tint": "#E9DEF2",
+      "image": "/tranzlife/packs/cyclerelief.svg",
+      "introTitle": "Nature's care.\nEvery cycle.",
+      "retailSlang": "Plant based",
+      "description": "CycleRelief is natural support for menstrual comfort and well-being. Dill and eucalyptus essential oils in a fast-absorbing, non-greasy roll-on help ease menstrual cramps, soothe abdominal discomfort and relax tense muscles. Plant based, not tested on animals, in recyclable packaging.",
+      "promotionText": "Gentle comfort.\nRolled on in seconds.",
+      "benefits": [
+        {
+          "title": "Helps ease menstrual cramps",
+          "icon": "heart"
+        },
+        {
+          "title": "Soothes abdominal discomfort",
+          "icon": "hand"
+        },
+        {
+          "title": "Relaxes tense muscles",
+          "icon": "lotus"
+        },
+        {
+          "title": "Fast-absorbing, non-greasy",
+          "icon": "drop"
+        },
+        {
+          "title": "Not tested on animals",
+          "icon": "paw"
+        }
+      ],
+      "detailsTitle": "Ingredients",
+      "details": {
+        "Dill essential oil": "Anethum graveolens",
+        "Eucalyptus essential oil": "Eucalyptus globulus",
+        "Net volume": "8 ml"
+      },
+      "howToUse": [
+        {
+          "title": "Roll",
+          "text": "Roll gently around the belly button.",
+          "icon": "roll"
+        },
+        {
+          "title": "Morning",
+          "text": "Apply every morning on an empty stomach.",
+          "icon": "sun"
+        },
+        {
+          "title": "Daily",
+          "text": "Use daily for best results.",
+          "icon": "calendar"
+        }
+      ],
+      "caution": "For external use only. Avoid contact with eyes. Keep out of reach of children.",
+      "storage": "Store in a cool, dry place.",
+      "comments": [],
+      "whyItWorks": [
+        {
+          "title": "Warming oils",
+          "text": "Dill and eucalyptus oils give a gentle, soothing feel where you need it."
+        },
+        {
+          "title": "Ideal during menstruation",
+          "text": "Fast-absorbing and non-greasy, so it fits into any day."
+        },
+        {
+          "title": "Kind by design",
+          "text": "Plant based, not tested on animals, recyclable packaging."
+        }
+      ],
+      "natureTitle": "Powered\nby nature",
+      "natureAmount": "2",
+      "natureAmountLabel": "essential oils",
+      "natureAmountDescription": "Dill and eucalyptus, nothing you don't need.",
+      "natureVisual": "list",
+      "natureDescription": "A 100% natural product: natural ingredients, Ayurvedic wisdom, safe and effective, with no added chemicals.",
+      "focus": "balance"
+    }
+  ],
+  "focusAreas": [
+    {
+      "type": "breathe",
+      "title": "Breathe",
+      "subtitle": "Lung health and quitting tobacco",
+      "color": "#2F7D46",
+      "tint": "#DCEAD3",
+      "icon": "lungs",
+      "image": "/tranzlife/brochure/test-tube.png",
+      "descriptionShort": "Support for your lungs, from daily lung booster gummies to a dual-action formula for smokers ready to quit.",
+      "description": "Every breath matters. City air, smoke and years of habit put your lungs under constant pressure.\nOur Breathe range combines Ayurvedic herbs and modern nutrition to support respiratory health — and helps heavy smokers take control of cravings and breathe better.",
+      "whoTitle": "Who is it for",
+      "whoText": "Heavy smokers who are ready to quit, people cutting down step by step, and anyone exposed every day to traffic, dust and pollution.",
+      "whatTitle": "How it helps",
+      "whatText": "PulmoClear Lung Booster Gummies support lung detoxification and respiratory health every day. Craving Control gummies add a calm-mind complex for smokers, with a simple 4-week plan towards smoke-free living."
+    },
+    {
+      "type": "cleanse",
+      "title": "Cleanse",
+      "subtitle": "Liver health",
+      "color": "#6F7F1E",
+      "tint": "#EDE8C9",
+      "icon": "liver",
+      "image": "/tranzlife/brochure/flask-leaves.png",
+      "descriptionShort": "Eleven classical Ayurvedic herbs for daily liver care and digestive comfort.",
+      "description": "Your liver works around the clock, filtering what you eat, drink and breathe.\nOur Cleanse range brings together eleven classical Ayurvedic herbs in a polyherbal concoction that supports liver detoxification, liver health and comfortable digestion.",
+      "whoTitle": "Who is it for",
+      "whoText": "People looking for daily detox and digestion support, busy professionals with irregular meals, and anyone who wants to give their liver steady, natural care.",
+      "whatTitle": "How it helps",
+      "whatText": "LiverDetox is led by Bhumyamalaki, Kalmegh and Kutki. 10 ml twice a day after meals makes it an easy ritual to keep."
+    },
+    {
+      "type": "balance",
+      "title": "Balance",
+      "subtitle": "Women's wellness and everyday vitality",
+      "color": "#7A4BA6",
+      "tint": "#E9DEF2",
+      "icon": "lotus",
+      "image": "/tranzlife/brochure/globe-family.png",
+      "descriptionShort": "Plant-based roll-ons for menstrual comfort and everyday vitality.",
+      "description": "Balance is care designed around real lives.\nOur Balance range uses dill and eucalyptus essential oils in simple morning roll-ons — CycleRelief for menstrual comfort, and Reviva as natural support for vitality for people managing diabetes.",
+      "whoTitle": "Who is it for",
+      "whoText": "Women who experience menstrual discomfort, and adults managing blood sugar who want a gentle, natural daily ritual alongside their doctor's advice.",
+      "whatTitle": "How it helps",
+      "whatText": "Roll gently around the belly button every morning on an empty stomach. CycleRelief helps ease cramps and soothe abdominal discomfort; Reviva supports circulation, comfort and overall well-being."
+    }
+  ],
+  "about": {
+    "heroTitle": "Who we are",
+    "heroText": "Tranz Life Biosciences is an innovation-led life sciences company dedicated to discovering, developing and delivering natural, safe and effective solutions that support health and well-being.",
+    "rootsTitle": "Roots of nature",
+    "roots": [
+      {
+        "title": "Nature",
+        "art": "leaf",
+        "text": "Rooted in the wisdom of nature, we start with plants that generations have trusted — Tulsi, Vasaka, Guduchi, Amla, Bhumyamalaki and more."
+      },
+      {
+        "title": "Research",
+        "art": "flask",
+        "text": "Driven by cutting-edge science, every formulation is research-driven, with a focus on efficacy and safety."
+      },
+      {
+        "title": "Quality",
+        "art": "shield",
+        "text": "High-quality manufacturing and stringent quality standards guide every step, from raw herb to finished pack."
+      }
+    ],
+    "visionTitle": "Our vision",
+    "vision": "To be a globally trusted leader in life sciences, transforming natural resources and innovative science into safe, effective and sustainable solutions that enhance health and enrich lives.",
+    "missionTitle": "Our mission",
+    "mission": [
+      "To innovate and develop science-backed, natural and sustainable products that promote wellness and prevent disease.",
+      "To deliver excellence through quality, safety and regulatory compliance at every step.",
+      "To collaborate, research and adopt advanced technologies to address global health challenges.",
+      "To create value for our stakeholders while upholding ethical practices and environmental responsibility."
+    ],
+    "valuesTitle": "Our values",
+    "values": [
+      {
+        "title": "Innovation",
+        "icon": "innovate",
+        "text": "Pioneering solutions for a better tomorrow"
+      },
+      {
+        "title": "Integrity",
+        "icon": "shield",
+        "text": "Ethical in all that we do"
+      },
+      {
+        "title": "Quality",
+        "icon": "badge",
+        "text": "Committed to excellence"
+      },
+      {
+        "title": "Sustainability",
+        "icon": "leaf",
+        "text": "Respecting nature, nurturing future"
+      },
+      {
+        "title": "Well-being",
+        "icon": "heart",
+        "text": "Enhancing lives, every day"
+      }
+    ],
+    "whatWeDoTitle": "What we do",
+    "strengthsTitle": "Core strengths",
+    "strengths": [
+      {
+        "title": "Science-backed innovation",
+        "text": "Formulations grounded in research and traditional knowledge."
+      },
+      {
+        "title": "Natural and sustainable",
+        "text": "Plant-based actives, responsibly sourced."
+      },
+      {
+        "title": "Quality and safety assured",
+        "text": "Rigorous standards at every stage of production."
+      },
+      {
+        "title": "Expert team and collaborations",
+        "text": "Scientists, Ayurveda experts and research partners."
+      },
+      {
+        "title": "Global vision, local impact",
+        "text": "Made in India, built for the world."
+      }
+    ],
+    "recognitionEyebrow": "On the global stage",
+    "recognitionTitle": "Taking Indian life sciences to the world.",
+    "recognitionText": "From the National Research Development Corporation in New Delhi to international health and investment forums, TranzLife is building partnerships that carry nature-led science beyond borders.",
+    "events": [
+      {
+        "image": "/tranzlife/events/event-2.png",
+        "caption": "At NRDC, Ministry of Science & Technology, New Delhi"
+      },
+      {
+        "image": "/tranzlife/events/event-1.png",
+        "caption": "At NRDC, New Delhi"
+      },
+      {
+        "image": "/tranzlife/events/event-3.png",
+        "caption": "International forum"
+      },
+      {
+        "image": "/tranzlife/events/event-4.png",
+        "caption": "International forum"
+      },
+      {
+        "image": "/tranzlife/events/event-6.png",
+        "caption": "Global partnerships"
+      },
+      {
+        "image": "/tranzlife/events/event-7.png",
+        "caption": "Global partnerships"
+      },
+      {
+        "image": "/tranzlife/events/event-8.png",
+        "caption": "Global partnerships"
+      },
+      {
+        "image": "/tranzlife/events/event-5.png",
+        "caption": "Industry summit"
+      }
+    ],
+    "credentialsTitle": "Credentials and recognition",
+    "credentials": [
+      {
+        "title": "FSSAI",
+        "description": "Food Safety and Standards Authority of India.",
+        "logo": "/tranzlife/credentials/fssai.png",
+        "show": true
+      },
+      {
+        "title": "Make in India",
+        "description": "Proudly developed and manufactured in India.",
+        "logo": "/tranzlife/credentials/make-in-india.png",
+        "show": true
+      },
+      {
+        "title": "Startup India",
+        "description": "Recognised by DPIIT under the Startup India initiative.",
+        "logo": "/tranzlife/credentials/startup-india.png",
+        "show": true
+      },
+      {
+        "title": "MSME",
+        "description": "Registered micro, small and medium enterprise.",
+        "logo": "/tranzlife/credentials/msme.png",
+        "show": true
+      },
+      {
+        "title": "GeM",
+        "description": "Government e-Marketplace.",
+        "logo": "/tranzlife/credentials/gem.png",
+        "dark": true,
+        "show": true
+      },
+      {
+        "title": "GMP",
+        "description": "Good Manufacturing Practice certified.",
+        "show": false
+      },
+      {
+        "title": "ISO 9001:2015",
+        "description": "Certified quality management system.",
+        "show": false
+      }
+    ],
+    "joinTitle": "Join the journey",
+    "joinText": "We are looking for distributors, retailers and research partners who share our belief that nature and science belong together.",
+    "joinOptions": [
+      {
+        "title": "Distributors",
+        "text": "Bring TranzLife products to your region."
+      },
+      {
+        "title": "Retailers",
+        "text": "Stock our range in your pharmacy or store."
+      },
+      {
+        "title": "Research partners",
+        "text": "Collaborate with us on the next generation of formulations."
+      }
+    ]
+  },
+  "science": {
+    "heroTitle": "Advancing genetic insights.\nDiscovering biomarkers.\nTransforming futures.",
+    "intro": "Our products today start with nature. Our research looks further ahead — to a future where wellness is personal, preventive and powered by genetic science.",
+    "pillarsTitle": "Five pillars",
+    "pillars": [
+      {
+        "title": "Genetic innovation",
+        "icon": "dna",
+        "text": "Decoding life at the molecular level."
+      },
+      {
+        "title": "Biomarker discovery",
+        "icon": "target",
+        "text": "Identifying today, preventing tomorrow."
+      },
+      {
+        "title": "AI-powered solutions",
+        "icon": "chip",
+        "text": "Intelligent technologies for precision insights."
+      },
+      {
+        "title": "Prenatal and genetic screening",
+        "icon": "family",
+        "text": "Enabling early detection for healthier generations."
+      },
+      {
+        "title": "Preventive healthcare",
+        "icon": "shield",
+        "text": "Empowering lives through preventive and predictive care."
+      }
+    ],
+    "comingTitle": "Coming next",
+    "comingIntro": "Fourteen formulations across four ranges are in development. Soon in stock.",
+    "pipeline": [
+      {
+        "name": "Rasayana Elite",
+        "group": "Adults",
+        "text": "Daily Rasayana for immunity, vitality and longevity."
+      },
+      {
+        "name": "Total360",
+        "group": "Adults",
+        "text": "Complete nutrition. Complete you."
+      },
+      {
+        "name": "Golden Years",
+        "group": "Adults",
+        "text": "Live longer. Live stronger."
+      },
+      {
+        "name": "Femina",
+        "group": "Women",
+        "text": "Radiance, balance and energy for women's health."
+      },
+      {
+        "name": "Viryamax",
+        "group": "Men",
+        "text": "Power. Performance. Vitality."
+      },
+      {
+        "name": "Kidzen",
+        "group": "Children",
+        "text": "Smart start. Smart future."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Let's build a\nhealthier tomorrow.",
+    "intro": "Tell us a little about yourself and what you are looking for. We usually reply within two working days.",
+    "reasons": [
+      {
+        "value": "product",
+        "label": "Product enquiry"
+      },
+      {
+        "value": "distributor",
+        "label": "Distributor or retailer"
+      },
+      {
+        "value": "research",
+        "label": "Research collaboration"
+      }
+    ],
+    "email": "info@tranzlife.in",
+    "phone": "+91 917 611 2188",
+    "whatsapp": "919176112188",
+    "address": [
+      "6, Flat 2D, 2nd Floor, Queenscourt",
+      "Montieth Road, Egmore",
+      "Chennai 600 008, Tamil Nadu, India"
+    ],
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Queenscourt+Montieth+Road+Egmore+Chennai+600008",
+    "website": "www.tranzlife.in"
+  },
+  "enquire": {
+    "title": "Enquire",
+    "stock": "Online store coming soon.",
+    "description": "Our products are available through distributors and partner stores. Send us an enquiry and we will connect you with the nearest stockist.",
+    "buttonText": "Send an enquiry",
+    "buttonUrl": "/contact"
+  },
+  "socials": {
+    "title": "Questions, partnerships or a product enquiry? We'd love to hear from you.",
+    "links": [
+      {
+        "text": "Enquire now",
+        "url": "/contact",
+        "id": "s-enquire"
+      },
+      {
+        "text": "Email us",
+        "url": "mailto:info@tranzlife.in",
+        "id": "s-email"
+      },
+      {
+        "text": "Brochure",
+        "url": "mailto:info@tranzlife.in?subject=Brochure%20request",
+        "id": "s-brochure"
+      }
+    ]
+  },
+  "footer": {
+    "title": "Roots of nature.\nInfinity of science.",
+    "entries": [
+      {
+        "title": "Products",
+        "links": [
+          {
+            "text": "All products",
+            "url": "/products"
+          },
+          {
+            "text": "LiverDetox",
+            "url": "/products/liverdetox"
+          },
+          {
+            "text": "PulmoClear",
+            "url": "/products/pulmoclear"
+          },
+          {
+            "text": "Craving Control",
+            "url": "/products/craving-control-gummies"
+          },
+          {
+            "text": "Reviva",
+            "url": "/products/reviva"
+          },
+          {
+            "text": "CycleRelief",
+            "url": "/products/cyclerelief"
+          }
+        ],
+        "id": "f-products"
+      },
+      {
+        "title": "Company",
+        "links": [
+          {
+            "text": "Our Story",
+            "url": "/about"
+          },
+          {
+            "text": "Science",
+            "url": "/science"
+          },
+          {
+            "text": "Breathe",
+            "url": "/focus/breathe"
+          },
+          {
+            "text": "Cleanse",
+            "url": "/focus/cleanse"
+          },
+          {
+            "text": "Balance",
+            "url": "/focus/balance"
+          }
+        ],
+        "id": "f-company"
+      },
+      {
+        "title": "Contact",
+        "links": [
+          {
+            "text": "Enquire",
+            "url": "/contact"
+          },
+          {
+            "text": "info@tranzlife.in",
+            "url": "mailto:info@tranzlife.in"
+          },
+          {
+            "text": "+91 917 611 2188",
+            "url": "tel:+919176112188"
+          },
+          {
+            "text": "Download brochure",
+            "url": "mailto:info@tranzlife.in?subject=Brochure%20request"
+          }
+        ],
+        "id": "f-contact"
+      }
+    ],
+    "meta": [
+      {
+        "text": "© 2026 Tranz Life Biosciences Pvt. Ltd."
+      },
+      {
+        "text": "Disclaimer",
+        "url": "/disclaimer"
+      }
+    ]
+  }
+}

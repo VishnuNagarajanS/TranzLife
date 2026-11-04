@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="1200" height="1200">
+<defs>
+  <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+  
+  <linearGradient id="shade" x1="0" x2="1">
+    <stop offset="0" stop-color="#6E3F9B" stop-opacity="1"/>
+    <stop offset="0.18" stop-color="#fff" stop-opacity="0.35"/>
+    <stop offset="0.32" stop-color="#6E3F9B" stop-opacity="0"/>
+    <stop offset="0.8" stop-color="#000" stop-opacity="0.12"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0.3"/>
+  </linearGradient>
+  <linearGradient id="shadeLight" x1="0" x2="1">
+    <stop offset="0" stop-color="#F4F1E6" stop-opacity="1"/>
+    <stop offset="0.18" stop-color="#fff" stop-opacity="0.35"/>
+    <stop offset="0.32" stop-color="#F4F1E6" stop-opacity="0"/>
+    <stop offset="0.8" stop-color="#000" stop-opacity="0.12"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0.3"/>
+  </linearGradient>
+</defs>
+
+  <ellipse cx="300" cy="522" rx="110" ry="13.2" fill="#163323" opacity="0.18" filter="url(#blur)"/>
+  <path d="M232 230 h136 l24 40 v232 a22 22 0 0 1 -22 22 h-140 a22 22 0 0 1 -22 -22 v-232 Z" fill="#6E3F9B"/>
+  <path d="M232 230 h136 l24 40 v232 a22 22 0 0 1 -22 22 h-140 a22 22 0 0 1 -22 -22 v-232 Z" fill="url(#shade)"/>
+  <rect x="238" y="96" width="124" height="142" rx="20" fill="#F4F1E6"/>
+  <rect x="238" y="96" width="124" height="142" rx="20" fill="url(#shadeLight)"/>
+  <rect x="238" y="214" width="124" height="10" fill="#C49A3C"/>
+  <rect x="226" y="290" width="148" height="190" rx="10" fill="#F7F5EC"/>
+  <rect x="226" y="444" width="148" height="36" rx="0" fill="#6E3F9B"/>
+  
+  <g transform="translate(300 340) scale(1)" fill="none" stroke-linecap="round" stroke-width="3.2">
+    <path d="M0 0 C-5 -7 -9.5 -8 -13 -8 A8 8 0 0 0 -13 8 C-9.5 8 -5 7 0 0" stroke="#6E3F9B"/>
+    <path d="M0 0 C5 7 9.5 8 13 8 A8 8 0 0 0 13 -8 C9.5 -8 5 -7 0 0" stroke="#C49A3C"/>
+    <path d="M0 0 V-22" stroke="#6E3F9B" stroke-width="2.4"/>
+    <circle cx="0" cy="-26" r="6" fill="#6E3F9B" stroke="none"/>
+  </g>
+  <text x="300" y="392" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="25" font-weight="700" fill="#6E3F9B" letter-spacing="-1">CycleRelief</text>
+  <text x="300" y="414" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="10.5" fill="#163323" letter-spacing="1.5">MENSTRUAL COMFORT</text>
+  <text x="300" y="468" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#fff">8 ml</text>
+  
+</svg>

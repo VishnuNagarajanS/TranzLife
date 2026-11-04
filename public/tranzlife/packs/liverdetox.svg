@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="1200" height="1200">
+<defs>
+  <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+  
+  <linearGradient id="shade" x1="0" x2="1">
+    <stop offset="0" stop-color="#6B3A12" stop-opacity="1"/>
+    <stop offset="0.18" stop-color="#fff" stop-opacity="0.35"/>
+    <stop offset="0.32" stop-color="#6B3A12" stop-opacity="0"/>
+    <stop offset="0.8" stop-color="#000" stop-opacity="0.12"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0.3"/>
+  </linearGradient>
+  <linearGradient id="shadeGold" x1="0" x2="1">
+    <stop offset="0" stop-color="#C49A3C" stop-opacity="1"/>
+    <stop offset="0.18" stop-color="#fff" stop-opacity="0.35"/>
+    <stop offset="0.32" stop-color="#C49A3C" stop-opacity="0"/>
+    <stop offset="0.8" stop-color="#000" stop-opacity="0.12"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0.3"/>
+  </linearGradient>
+</defs>
+
+  <ellipse cx="300" cy="532" rx="120" ry="14.399999999999999" fill="#163323" opacity="0.18" filter="url(#blur)"/>
+  <path d="M262 92 h76 v60 c0 18 70 38 70 96 v262 a26 26 0 0 1 -26 26 h-164 a26 26 0 0 1 -26 -26 v-262 c0 -58 70 -78 70 -96 Z" fill="#6B3A12"/>
+  <path d="M262 92 h76 v60 c0 18 70 38 70 96 v262 a26 26 0 0 1 -26 26 h-164 a26 26 0 0 1 -26 -26 v-262 c0 -58 70 -78 70 -96 Z" fill="url(#shade)"/>
+  <rect x="252" y="56" width="96" height="60" rx="10" fill="#C49A3C"/>
+  <rect x="252" y="56" width="96" height="60" rx="10" fill="url(#shadeGold)"/>
+  <rect x="204" y="272" width="192" height="226" rx="12" fill="#F7F5EC"/>
+  <rect x="204" y="272" width="192" height="44" rx="12" fill="#6F7F1E"/>
+  <rect x="204" y="300" width="192" height="16" fill="#6F7F1E"/>
+  <text x="300" y="300" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#fff" letter-spacing="3">AYURVEDIC</text>
+  
+  <g transform="translate(300 372) scale(1.05)" fill="none" stroke-linecap="round" stroke-width="3.2">
+    <path d="M0 0 C-5 -7 -9.5 -8 -13 -8 A8 8 0 0 0 -13 8 C-9.5 8 -5 7 0 0" stroke="#6F7F1E"/>
+    <path d="M0 0 C5 7 9.5 8 13 8 A8 8 0 0 0 13 -8 C9.5 -8 5 -7 0 0" stroke="#C49A3C"/>
+    <path d="M0 0 V-22" stroke="#6F7F1E" stroke-width="2.4"/>
+    <circle cx="0" cy="-26" r="6" fill="#6F7F1E" stroke="none"/>
+  </g>
+  <text x="300" y="424" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="31" font-weight="700" fill="#6F7F1E" letter-spacing="-1">LiverDetox</text>
+  <text x="300" y="448" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#163323" letter-spacing="2">LIVER BOOSTER</text>
+  <text x="300" y="478" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#C49A3C">500 ml</text>
+  
+</svg>

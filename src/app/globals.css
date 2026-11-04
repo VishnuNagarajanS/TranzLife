@@ -1,0 +1,317 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@font-face {
+  font-family: 'NeueHaas';
+  src: url('/fonts/neue-haas.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-haas: 'NeueHaas', ui-sans-serif, system-ui, sans-serif;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --font-serif-wordmark: var(--font-cormorant), 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  /* TranzLife palette: pale green-cream, deep forest green, gold. */
+  --color-cream: #f2f4e8;
+  --color-cream-deep: #e4e9d4;
+  --color-forest: #163323;
+  --color-forest-2: #1f4430;
+  --color-green: #2f7d46;
+  --color-gold: #c49a3c;
+  --color-gold-light: #e2c784;
+  --color-black: #163323;
+  --color-white: #f2f4e8;
+  --color-gray-100: #f7f8f0;
+  --color-gray-200: #e4e9d4;
+  --color-gray-300: #d3dac2;
+  --color-gray-400: #b9c2aa;
+  --color-gray-500: #9aa58d;
+  --color-gray-600: #85907a;
+  --color-gray-700: #6f7a66;
+  --color-gray-800: #56604f;
+  --color-gray-900: #354036;
+  --color-gray-950: #222b24;
+  --color-yellow: #e2c784;
+  --color-orange: #c49a3c;
+  --color-red: #b3412f;
+  --color-pink: #c2457a;
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+  --product-tile-width: 100%;
+  --product-tile-height: 100vw;
+  --nav-space-top: 58px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --product-tile-width: min(580px, 100svh * 1.2);
+    --product-tile-height: min(480px, 100svh);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --product-tile-width: 46vw;
+    --product-tile-height: calc(var(--product-tile-width) * 0.9);
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --product-tile-width: 680px;
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-haas);
+  --font-heading: var(--font-haas);
+  --color-black: var(--color-black);
+  --color-white: var(--color-white);
+  --color-cream: var(--color-cream);
+  --color-cream-deep: var(--color-cream-deep);
+  --color-forest: var(--color-forest);
+  --color-forest-2: var(--color-forest-2);
+  --color-green: var(--color-green);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --font-wordmark: var(--font-serif-wordmark);
+  --color-gray-100: var(--color-gray-100);
+  --color-gray-200: var(--color-gray-200);
+  --color-gray-300: var(--color-gray-300);
+  --color-gray-400: var(--color-gray-400);
+  --color-gray-500: var(--color-gray-500);
+  --color-gray-600: var(--color-gray-600);
+  --color-gray-700: var(--color-gray-700);
+  --color-gray-800: var(--color-gray-800);
+  --color-gray-900: var(--color-gray-900);
+  --color-gray-950: var(--color-gray-950);
+  --color-yellow: var(--color-yellow);
+  --color-orange: var(--color-orange);
+  --color-red: var(--color-red);
+  --color-pink: var(--color-pink);
+  --ease-in-out-quart: var(--ease-in-out-quart);
+  /* Typography tokens from the original stylesheet (differ from Tailwind defaults). */
+  --leading-none: 1.12;
+  --tracking-tight: -0.02em;
+  --tracking-tighter: -0.04em;
+  --text-10xl: 10rem;
+  --text-10xl--line-height: 1;
+  --text-12xl: 12rem;
+  --text-12xl--line-height: 1;
+  --breakpoint-3xl: 1920px;
+}
+
+@utility leading-negative {
+  line-height: 0.9;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-haas);
+    font-size: 16px;
+    font-size: clamp(16px, 1.1vw, 20px);
+    font-synthesis: none;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    color: var(--color-black);
+  }
+  @media (min-width: 1536px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-black);
+  }
+  ::selection {
+    background: var(--color-gold-light);
+    color: var(--color-forest);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+  button,
+  [role='button'] {
+    cursor: pointer;
+  }
+}
+
+.pin-spacer {
+  pointer-events: none;
+}
+
+/* Text roll-over on hover: the label is duplicated one line below. */
+[data-cycle-text] {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  padding-right: 0.1em;
+}
+[data-cycle-text] > * {
+  pointer-events: none;
+}
+[data-cycle-text-inner] {
+  display: inline-block;
+  padding-right: 0.1em;
+}
+[data-cycle-text-inner]::after {
+  content: attr(data-cycle-text-inner);
+  padding: inherit;
+  padding-right: 0.1em;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+/*
+ * Navigation: frosted-glass bar whose bottom border draws in/out with page transitions.
+ * Heavy blur plus saturation lets whatever scrolls underneath show through as soft colour.
+ */
+.page-navigation {
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 8px 32px -12px rgba(22, 51, 35, 0.18);
+}
+/* Glass sheen: a soft light gradient over the tint. */
+.page-navigation-sheen {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 100%);
+}
+.page-navigation::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--border-color);
+  transform: scaleX(0);
+  content: '';
+  transition: transform var(--nav-transition-duration, 1s) var(--ease-in-out-quart);
+}
+.page-navigation--in::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.page-navigation--out::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.dropstore-button > * {
+  pointer-events: none;
+}
+
+.dialog-transitions {
+  transition-property: opacity, transform, background-color;
+  transition-duration: 0.6s;
+  transition-timing-function: var(--ease-in-out-quart);
+}
+
+.loader-view {
+  transition: opacity 0.3s ease-out;
+  opacity: 1;
+}
+.loader-view--hidden {
+  opacity: 0;
+}
+
+.image-sequence-figure canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Socials section (about + product pages) */
+.socials-link {
+  transition: color 0.3s var(--ease-in-out-quart);
+  transition-delay: 0.1s;
+  border-color: var(--color-gray-200);
+  border-top-width: 1px;
+}
+@media (pointer: fine) {
+  .socials-link {
+    color: var(--color-gray-500);
+  }
+  .socials-link .socials-link-icon {
+    opacity: 0;
+  }
+  .socials-link:hover {
+    color: var(--color-black);
+  }
+  .socials-link:hover .socials-link-text {
+    transform: translate(1.5rem);
+  }
+  .socials-link:hover .socials-link-icon {
+    transform: translate(-1.5rem);
+    opacity: 1;
+  }
+}
+@media (pointer: coarse) {
+  .socials-link {
+    border-color: var(--color-black);
+  }
+}
+.socials-link-icon,
+.socials-link-text {
+  transition-property: transform, opacity;
+  transition-duration: 0.3s;
+  transition-delay: 0.1s;
+  transition-timing-function: var(--ease-in-out-quart);
+}
+
+.product-tile {
+  width: var(--product-tile-width);
+  height: var(--product-tile-height);
+}
+.product-tile figure {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hairline gold rule used between TranzLife sections. */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+/* Form fields on the contact page. */
+.tl-field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-gray-400);
+  border-radius: 0;
+  padding: 0.75rem 0;
+  font-size: 1.125rem;
+  color: var(--color-forest);
+  transition: border-color 0.3s var(--ease-in-out-quart);
+}
+.tl-field::placeholder {
+  color: var(--color-gray-600);
+}
+.tl-field:focus,
+.tl-field:focus-visible {
+  outline: none;
+  border-color: var(--color-forest);
+}
+
+/* Home "Inside every cell" story: chapter markers. */
+.story-dot {
+  opacity: 0.45;
+  transition: opacity 0.4s var(--ease-in-out-quart), color 0.4s var(--ease-in-out-quart);
+}
+.story-dot.is-active {
+  opacity: 1;
+  color: var(--color-gold-light);
+}
