@@ -510,3 +510,12 @@ html[data-lite] .leafbg__light, html[data-lite] .leafbg__branch { animation: non
 .leafbg[data-paused] .leafbg__light, .leafbg[data-paused] .leafbg__branch { animation-play-state: paused; }
 /* While the page is actually scrolling, hold the ambient sway so the browser only has to move the page. */
 html[data-scrolling] .leafbg__light, html[data-scrolling] .leafbg__branch { animation-play-state: paused; }
+
+/* Blur-up: images still downloading sharpen into place once loaded (see lib/dropstore/image-fade.ts). */
+img[data-img-fade] { transition: opacity 0.6s ease, filter 0.8s ease; }
+img[data-img-loading] { opacity: 0; filter: blur(16px); }
+html[data-lite] img[data-img-loading] { filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  img[data-img-fade] { transition: opacity 0.3s ease; }
+  img[data-img-loading] { filter: none; }
+}

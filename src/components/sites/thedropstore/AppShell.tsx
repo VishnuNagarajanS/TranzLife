@@ -6,6 +6,7 @@ import { useMotion } from '@/lib/dropstore/motion';
 import { Pointer } from '@/lib/dropstore/pointer';
 import { blobHdriFiles } from '@/lib/dropstore/blob';
 import { initLiteMode } from '@/lib/dropstore/lite';
+import { initImageFade } from '@/lib/dropstore/image-fade';
 import { cn } from '@/lib/utils';
 import { Providers, useUI, usePreloader, DEFAULT_POINTER_SIZE } from './state';
 import { ScreenTransitionProvider } from './ScreenTransition';
@@ -208,6 +209,7 @@ function PointerChaser() {
 
 function SmoothScroll() {
   useEffect(() => initLiteMode(), []);
+  useEffect(() => initImageFade(), []);
   useLayoutEffect(() => {
     if (isTouchDevice() || ScrollSmoother.get()) return;
     ScrollSmoother.create({ wrapper: '#smooth-container', content: '#smooth-content', effects: true, smooth: 1 });

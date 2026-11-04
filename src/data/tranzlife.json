@@ -308,7 +308,7 @@
       "price": "",
       "accent": "#6F7F1E",
       "tint": "#EDE8C9",
-      "image": "/tranzlife/products/liverdetox.png",
+      "image": "/tranzlife/products/liverdetox.webp",
       "introTitle": "Detoxifies.\nProtects.\nRejuvenates.",
       "retailSlang": "Liver booster",
       "description": "LiverDetox is a polyherbal concoction of eleven classical Ayurvedic herbs, led by Bhumyamalaki, Kalmegh and Kutki. It supports natural liver detoxification, healthy liver function and comfortable digestion, as part of a balanced daily routine.",
@@ -504,7 +504,7 @@
       "price": "",
       "accent": "#1F5A35",
       "tint": "#D7E3CF",
-      "image": "/tranzlife/products/craving-control-gummies.png",
+      "image": "/tranzlife/products/craving-control-gummies.webp",
       "introTitle": "Craving control.\nLife in control.",
       "retailSlang": "For heavy smokers",
       "description": "A premium, science-backed formula designed for heavy smokers who are ready to quit. Its dual action combines a craving control complex — to help reduce urges and withdrawal discomfort — with a lung detox complex that supports natural detoxification and respiratory wellness, while keeping you calm and balanced.",
@@ -702,7 +702,7 @@
       "price": "",
       "accent": "#7A4BA6",
       "tint": "#E9DEF2",
-      "image": "/tranzlife/products/cyclerelief.png",
+      "image": "/tranzlife/products/cyclerelief.webp",
       "introTitle": "Nature's care.\nEvery cycle.",
       "retailSlang": "Plant based",
       "description": "CycleRelief is natural support for menstrual comfort and well-being. Dill and eucalyptus essential oils in a fast-absorbing, non-greasy roll-on help ease menstrual cramps, soothe abdominal discomfort and relax tense muscles. Plant based, not tested on animals, in recyclable packaging.",
@@ -912,35 +912,35 @@
     "recognitionText": "From the National Research Development Corporation in New Delhi to international health and investment forums, TranzLife is building partnerships that carry nature-led science beyond borders.",
     "events": [
       {
-        "image": "/tranzlife/events/event-2.png",
+        "image": "/tranzlife/events/event-2.webp",
         "caption": "At NRDC, Ministry of Science & Technology, New Delhi"
       },
       {
-        "image": "/tranzlife/events/event-1.png",
+        "image": "/tranzlife/events/event-1.webp",
         "caption": "At NRDC, New Delhi"
       },
       {
-        "image": "/tranzlife/events/event-3.png",
+        "image": "/tranzlife/events/event-3.webp",
         "caption": "International forum"
       },
       {
-        "image": "/tranzlife/events/event-4.png",
+        "image": "/tranzlife/events/event-4.webp",
         "caption": "International forum"
       },
       {
-        "image": "/tranzlife/events/event-6.png",
+        "image": "/tranzlife/events/event-6.webp",
         "caption": "Global partnerships"
       },
       {
-        "image": "/tranzlife/events/event-7.png",
+        "image": "/tranzlife/events/event-7.webp",
         "caption": "Global partnerships"
       },
       {
-        "image": "/tranzlife/events/event-8.png",
+        "image": "/tranzlife/events/event-8.webp",
         "caption": "Global partnerships"
       },
       {
-        "image": "/tranzlife/events/event-5.png",
+        "image": "/tranzlife/events/event-5.webp",
         "caption": "Industry summit"
       }
     ],

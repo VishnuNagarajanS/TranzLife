@@ -198,6 +198,8 @@ function WhatWeDoSteps({ items }: { items: (typeof siteData.home.whatWeDo)[numbe
 function NatureScienceSection() {
   const { home } = siteData;
   useHeadingInTween('[data-band-title]', {}, { scrollTrigger: { trigger: '[data-band-title]', start: 'top 85%' } });
+  // Words darken as the paragraph is read past, like the intro.
+  useTextGuide('[data-band-text]', 'text-gray-900', 'text-gray-400');
 
   return (
     <PageSection className="relative bg-white py-24 flex flex-col gap-16 md:gap-24">
@@ -208,7 +210,7 @@ function NatureScienceSection() {
             {lines(home.bandTitle)}
           </Text>
         </div>
-        <Text variant="text-xl" className="col-span-full lg:col-span-5 text-gray-900">
+        <Text variant="text-xl" className="col-span-full lg:col-span-5 text-gray-900" data-band-text="">
           {home.bandText}
         </Text>
       </div>
@@ -485,6 +487,7 @@ function FutureSection() {
 function PartnerSection() {
   const { home } = siteData;
   const badges = home.trust.filter((b) => b.show);
+  useTextGuide('[data-partner-text]', 'text-black', 'text-gray-400');
   return (
     <PageSection className="relative bg-white py-24 flex flex-col gap-12">
       <div className="grid grid-cols-12 gap-6 items-end">
@@ -492,7 +495,9 @@ function PartnerSection() {
           {home.partnerTitle}
         </Text>
         <div className="col-span-full lg:col-span-5 flex flex-col gap-6">
-          <Text variant="text-xl">{home.partnerText}</Text>
+          <Text variant="text-xl" data-partner-text="">
+            {home.partnerText}
+          </Text>
           <div className="flex flex-wrap gap-3">
             <Button is={Link} href="/contact?reason=distributor" scroll={false}>
               Become a partner
