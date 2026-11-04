@@ -178,7 +178,8 @@ export function IngredientRain({ product }: { product: Product }) {
         tile.removeEventListener('mouseenter', enter);
         tile.removeEventListener('mouseleave', leave);
         tl?.kill();
-        gsap.set(tile, { clearProps: 'rotate,scale,backgroundColor' });
+        // Hand the colour back to the product tint (React set it inline; clearing it would leave the card blank).
+        gsap.set(tile, { clearProps: 'rotate,scale', backgroundColor: product.tint });
         if (pack) gsap.set(pack, { clearProps: 'rotate,scale' });
       };
     });
