@@ -126,9 +126,12 @@ function ProductPageContent({ product }: { product: ProductWithTweenVars }) {
 
   useEffect(() => () => blobTrigger.current?.kill(), []);
 
+  const blobFrame = useRef(0);
   useTicker(() => {
     const trigger = blobTrigger.current;
     if (!trigger || !trigger.isActive) return;
+    // Every other tick (30fps): the orb is soft and slow, and the saved GPU time keeps scrolling smooth.
+    if (blobFrame.current++ % 2) return;
     const { renderer, scene, camera } = getBlob();
     renderer.render(scene, camera);
   });

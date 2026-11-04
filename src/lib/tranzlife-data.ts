@@ -115,6 +115,10 @@ export interface TranzLifeData {
     ingredientsEyebrow: string;
     ingredientsTitle: string;
     ingredients: { name: string; latin: string; role: string; products: string[] }[];
+    recognitionEyebrow: string;
+    recognitionTitle: string;
+    recognitionText: string;
+    events: { image: string; caption: string }[];
     futureEyebrow: string;
     futureTitle: string;
     futureImage: string;
@@ -140,10 +144,6 @@ export interface TranzLifeData {
     whatWeDoTitle: string;
     strengthsTitle: string;
     strengths: { title: string; text: string }[];
-    recognitionEyebrow: string;
-    recognitionTitle: string;
-    recognitionText: string;
-    events: { image: string; caption: string }[];
     credentialsTitle: string;
     /** `logo` from /certificates; `dark` marks a logo drawn for a dark background (GeM). */
     credentials: { title: string; description: string; logo?: string; dark?: boolean; show: boolean }[];

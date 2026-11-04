@@ -1,144 +1,18 @@
 'use client';
 
-import React, { Fragment, useEffect } from 'react';
-import { gsap, ScrollTrigger, breakpoints, normalizeToDeltaRatio } from '@/lib/dropstore/gsap';
+import React, { Fragment, useRef } from 'react';
+import { gsap, ScrollTrigger, breakpoints } from '@/lib/dropstore/gsap';
 import { useLatest, useMotion, useTicker } from '@/lib/dropstore/motion';
 import { useHeadingInTween } from '@/lib/dropstore/heading-tween';
-import { Pointer } from '@/lib/dropstore/pointer';
 import { useBlobChasing } from '@/lib/dropstore/blob';
-import { siteData, Product } from '@/lib/tranzlife-data';
-import { cn } from '@/lib/utils';
+import { siteData } from '@/lib/tranzlife-data';
 import { PageLayout, SideLabel } from '@/components/sites/thedropstore/PageLayout';
-import { ProductTile, ProductTransitionContainer } from '@/components/sites/thedropstore/ProductTile';
+import { ProductsWheel } from './ProductsWheel';
 import { Button } from '@/components/sites/thedropstore/Button';
 import { Text } from '@/components/sites/thedropstore/Text';
 import { Icon } from '@/components/sites/thedropstore/Icon';
 import { useUI } from '@/components/sites/thedropstore/state';
 import { scrollToHash, useScreenTransition } from '@/components/sites/thedropstore/ScreenTransition';
-import { useProductScreenTransition } from '@/components/sites/thedropstore/useProductScreenTransition';
-
-// Five tiles get more room than the original twenty: two columns, gentler scale steps.
-const OUTER_CLASSES = ['col-span-12 lg:col-span-6'];
-const SCALES = [1, 0.86, 0.92, 1, 0.88];
-
-function ProductsView({ products, className, ...rest }: { products: Product[]; className?: string } & Record<string, unknown>) {
-  const [ui, dispatch] = useUI();
-
-  const setScreenTransitionProduct = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.currentTarget.parentElement?.setAttribute('data-product-parent-active', '');
-    dispatch({
-      type: 'setProductScreenTransition',
-      payload: products.find((p) => p.slug === event.currentTarget.getAttribute('data-product-tile')),
-    });
-  };
-
-  // Scatter tiles: per-tile scale (bigger tiles stack on top) and a random ±20px offset.
-  useMotion(
-    () => {
-      const tiles = Array.from(document.querySelectorAll<HTMLElement>('[data-products-view-grid-tile]'));
-      const offset = gsap.utils.mapRange(0, 1, -20, 20);
-      const toZ = gsap.utils.pipe(gsap.utils.mapRange(0, 1, 0, products.length), Math.round);
-      const sets = tiles.map((tile, i) => {
-        const scale = SCALES[i % SCALES.length];
-        tile.setAttribute('data-speed', String(scale));
-        return gsap.set(tile, { scale, zIndex: toZ(scale), position: 'relative', left: offset(Math.random()), top: offset(Math.random()) });
-      });
-      return () => {
-        sets.forEach((s) => s.revert().kill());
-        tiles.forEach((tile) => {
-          gsap.set(tile, { clearProps: 'left,top,zIndex' });
-          tile.removeAttribute('data-speed');
-        });
-      };
-    },
-    () => ({ matchMedia: `(min-width: ${breakpoints.sm})`, shouldResetOnResize: [document.body, 'horizontal'] }),
-    []
-  );
-
-  // Mouse parallax: larger tiles travel further against the pointer.
-  useMotion(
-    (motion) => {
-      const states = new Map<HTMLElement, { setX: (v: number) => void; setY: (v: number) => void; scale: number; x: number; y: number; nativeY: number }>();
-      const listeners: (() => void)[] = [];
-      document.querySelectorAll<HTMLElement>('[data-products-view-grid-tile]').forEach((tile) => {
-        tile.addEventListener('kill-motion', motion.destroy);
-        listeners.push(() => tile.removeEventListener('kill-motion', motion.destroy));
-        states.set(tile, {
-          setX: gsap.quickSetter(tile, 'x', 'px') as (v: number) => void,
-          setY: gsap.quickSetter(tile, 'y', 'px') as (v: number) => void,
-          scale: parseFloat(tile.getAttribute('data-speed') ?? '1'),
-          x: 0,
-          y: 0,
-          nativeY: gsap.getProperty(tile, 'y') as number,
-        });
-      });
-      const pointer = Pointer.instance;
-      const update = () => {
-        states.forEach((s) => {
-          const range = gsap.utils.mapRange(0, 1, -180 * s.scale, 180 * s.scale);
-          const targetX = -range(pointer.normalX) - s.x;
-          const targetY = -range(pointer.normalY) - s.y + s.nativeY;
-          const t = normalizeToDeltaRatio(0.05);
-          s.setX((s.x = gsap.utils.interpolate(s.x, targetX, t)));
-          s.setY((s.y = gsap.utils.interpolate(s.y, targetY, t)));
-        });
-      };
-      gsap.ticker.add(update);
-      return () => {
-        gsap.ticker.remove(update);
-        listeners.forEach((l) => l());
-      };
-    },
-    () => ({ matchMedia: `(min-width: ${breakpoints.md}) and (pointer: fine) and (prefers-reduced-motion: no-preference)` }),
-    [],
-    true
-  );
-
-  // Flag tiles in view so only those animate out on leave.
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) =>
-      entries.forEach((entry) => {
-        const el = entry.target;
-        if (entry.isIntersecting) {
-          el.parentElement?.setAttribute('data-is-in-viewport', '');
-          el.setAttribute('data-is-in-viewport', '');
-        } else {
-          el.parentElement?.removeAttribute('data-is-in-viewport');
-          el.removeAttribute('data-is-in-viewport');
-        }
-      })
-    );
-    document.querySelectorAll('[data-product-tile]').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      {...rest}
-      id="products"
-      data-products-view=""
-      className={cn(
-        className,
-        'sm:px-0 grid justify-items-center grid-cols-12 sm:gap-x-8 gap-y-2 sm:gap-y-16 xl:gap-y-40 xl:gap-x-12 padding-12'
-      )}
-    >
-      {products.map((product, i) => (
-        <ProductTransitionContainer
-          key={[i, product.id].join(':')}
-          product={product}
-          outerAttributes={{ className: OUTER_CLASSES[i % OUTER_CLASSES.length] }}
-          innerAttributes={{ className: 'origin-center' }}
-        >
-          <ProductTile
-            product={product}
-            htmlAttributes={{ onMouseDown: setScreenTransitionProduct }}
-            withImageSequence={ui.screenTransitionProduct?.slug === product.slug}
-          />
-        </ProductTransitionContainer>
-      ))}
-    </div>
-  );
-}
 
 function FixedBack() {
   return (
@@ -173,54 +47,34 @@ export function ProductsIndex() {
   const getBlob = useBlobChasing();
   const headingRef = useLatest(heading);
 
+  // Draw while the blob is visible, plus one last frame to clear it once it has faded out.
+  const blobDrawn = useRef(true);
+  const blobTick = useRef(0);
   useTicker(() => {
     const { blob, renderer, scene, camera } = getBlob();
-    if (blob && blob.material.opacity >= 0) renderer.render(scene, camera);
+    if (!blob) return;
+    const visible = blob.material.opacity > 0.002;
+    if (!visible && !blobDrawn.current) return;
+    // 30fps is plenty for the soft orb and halves the GPU work while the page scrolls.
+    if (visible && blobTick.current++ % 2) return;
+    blobDrawn.current = visible;
+    renderer.render(scene, camera);
   });
 
   useMotion(() => void fadeBlob(getBlob, 1), { enable: () => !ui.isLoaderViewToggled }, [ui.isLoaderViewToggled]);
 
-  // Pin the headline while the tiles scroll over it, then fade it before the bands below;
-  // hide the blob once products reach the top.
+  // Hide the blob once the carousel reaches the top.
   useMotion(
     () => {
-      const ctx = gsap.context(() => {
-        ScrollTrigger.create({
-          trigger: 'html',
-          start: 'top top',
-          endTrigger: '[data-products-view]',
-          end: 'bottom top',
-          pin: '[data-hero-heading]',
-        });
-        gsap.to('[data-hero-heading-inner]', {
-          opacity: 0,
-          ease: 'none',
-          scrollTrigger: { trigger: '[data-products-view]', start: 'bottom 90%', end: 'bottom 40%', scrub: true },
-        });
-        ScrollTrigger.create({
-          trigger: '[data-products-view]',
-          start: 'top top',
-          endTrigger: 'html',
-          end: 'bottom bottom',
-          onEnter: () => fadeBlob(getBlob, 0),
-          onLeaveBack: () => fadeBlob(getBlob, 1),
-        });
+      const trigger = ScrollTrigger.create({
+        trigger: '[data-products-view]',
+        start: 'top top',
+        endTrigger: 'html',
+        end: 'bottom bottom',
+        onEnter: () => fadeBlob(getBlob, 0),
+        onLeaveBack: () => fadeBlob(getBlob, 1),
       });
-      return () => ctx.kill();
-    },
-    { matchMedia: `(min-width: ${breakpoints.sm})` },
-    []
-  );
-
-  // Nudge the page down a little after the intro so the products peek in.
-  useMotion(
-    () => {
-      const timer = setTimeout(() => {
-        if (window.scrollY === 0) {
-          gsap.to(document.scrollingElement, { scrollTo: 0.2 * window.innerHeight, ease: 'power2.inOut', duration: 1 });
-        }
-      }, 1.3 * ui.screenTransitionDurationMS);
-      return () => clearTimeout(timer);
+      return () => trigger.kill();
     },
     { matchMedia: `(min-width: ${breakpoints.sm})` },
     []
@@ -250,18 +104,8 @@ export function ProductsIndex() {
         tween.duration(duration / 2);
         tween.reverse();
       }
-      gsap.to('[data-products-view-grid-tile][data-is-in-viewport]:not([data-product-parent-active])', {
-        opacity: 0,
-        scale: 0,
-        duration: 0.3,
-        ease: 'power3.inOut',
-        stagger: { amount: 0.3 },
-        delay: 0.3,
-      });
     },
   });
-
-  useProductScreenTransition(undefined, '/products');
 
   const pointerText = ui.isLoaderViewToggled ? 'Loading...' : 'Scroll';
   const lines = (text: string) =>
@@ -309,14 +153,7 @@ export function ProductsIndex() {
               </div>
             </Text>
           </div>
-          <ProductsView
-            className="container mx-auto px-2 sm:px-6"
-            products={products}
-            data-loaded-in="fade"
-            data-entered-in="fade"
-            data-exiting="fade"
-          />
-          <div className="h-2 sm:h-[50vh]" role="separator" />
+          <ProductsWheel products={products} />
         </div>
       </section>
     </PageLayout>

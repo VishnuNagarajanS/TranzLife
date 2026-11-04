@@ -128,70 +128,6 @@ function IntroSection() {
 
 /* ------------------------------------------------- Nature meets science --- */
 
-/**
- * Innovate → Develop → Deliver → Impact as one process. On scroll-in a gold line draws through
- * the four icons (desktop), each icon pops in as the line reaches it and its text rises after.
- * Each step keeps its own number above its title; on hover its icon fills gold.
- */
-function WhatWeDoSteps({ items }: { items: (typeof siteData.home.whatWeDo)[number][] }) {
-  const root = useRef<HTMLOListElement>(null);
-
-  useMotion(
-    () => {
-      const el = root.current;
-      if (!el) return;
-      const ctx = gsap.context(() => {
-        const icons = gsap.utils.toArray<HTMLElement>('[data-step-icon]');
-        const texts = gsap.utils.toArray<HTMLElement>('[data-step-text]');
-        gsap.set('[data-steps-line]', { scaleX: 0 });
-        gsap.set(icons, { scale: 0.4, autoAlpha: 0, rotate: -30 });
-        gsap.set(texts, { y: 24, autoAlpha: 0 });
-        const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 80%', once: true } });
-        tl.to('[data-steps-line]', { scaleX: 1, duration: 1.6, ease: 'power2.inOut' }, 0);
-        icons.forEach((icon, i) => {
-          tl.to(icon, { scale: 1, autoAlpha: 1, rotate: 0, duration: 0.6, ease: 'back.out(2)' }, i * 0.4);
-          tl.to(texts[i], { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out' }, i * 0.4 + 0.15);
-        });
-      }, el);
-      return () => ctx.revert();
-    },
-    { matchMedia: '(prefers-reduced-motion: no-preference)' },
-    []
-  );
-
-  return (
-    <ol ref={root} className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 border-t border-gray-300 pt-10">
-      {/* Runs through the centres of the four icons (pt-10 + half of the 3.5rem icon). */}
-      <span
-        className="hidden lg:block absolute left-7 right-0 top-[calc(2.5rem+1.75rem)] h-px bg-gold origin-left"
-        role="none"
-        data-steps-line=""
-      />
-      {items.map((item, i) => (
-        <li key={item.title} className="group relative flex flex-col gap-5 transition-transform duration-500 hover:-translate-y-1">
-          <span
-            className="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-black text-gold ring-8 ring-white transition-colors duration-500 group-hover:bg-gold group-hover:text-black"
-            data-step-icon=""
-          >
-            <Icon name={item.icon} className="w-6 h-6" />
-          </span>
-          <div className="flex flex-col gap-3" data-step-text="">
-            <Text variant="text-sm" className="tracking-[0.2em] text-gold">
-              {String(i + 1).padStart(2, '0')}
-            </Text>
-            <Text tag="h3" variant="headline-3">
-              {item.title}
-            </Text>
-            <Text variant="text-base" className="text-gray-800 max-w-xs">
-              {item.text}
-            </Text>
-          </div>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
 function NatureScienceSection() {
   const { home } = siteData;
   useHeadingInTween('[data-band-title]', {}, { scrollTrigger: { trigger: '[data-band-title]', start: 'top 85%' } });
@@ -216,7 +152,26 @@ function NatureScienceSection() {
         ))}
       </div>
 
-      <WhatWeDoSteps items={home.whatWeDo} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 border-t border-gray-300 pt-10">
+        {home.whatWeDo.map((item, i) => (
+          <div key={item.title} className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <span className="flex items-center justify-center w-14 h-14 rounded-full bg-black text-gold">
+                <Icon name={item.icon} className="w-6 h-6" />
+              </span>
+              <Text variant="text-sm" className="text-gray-700">
+                0{i + 1}
+              </Text>
+            </div>
+            <Text tag="h3" variant="headline-3">
+              {item.title}
+            </Text>
+            <Text variant="text-base" className="text-gray-800 max-w-xs">
+              {item.text}
+            </Text>
+          </div>
+        ))}
+      </div>
     </PageSection>
   );
 }
@@ -436,6 +391,51 @@ function IngredientsSection() {
   );
 }
 
+/* ----------------------------------------------------------- Recognition --- */
+
+function RecognitionSection() {
+  const { home } = siteData;
+  const [first, ...rest] = home.events;
+  return (
+    <PageSection className="relative bg-white py-24 flex flex-col gap-12">
+      <div className="grid grid-cols-12 gap-6 items-end">
+        <div className="col-span-full lg:col-span-7 flex flex-col gap-6">
+          <Eyebrow>{home.recognitionEyebrow}</Eyebrow>
+          <Text tag="h2" variant="headline-1">
+            {home.recognitionTitle}
+          </Text>
+        </div>
+        <Text variant="text-lg" className="col-span-full lg:col-span-5 text-gray-900">
+          {home.recognitionText}
+        </Text>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <EventPhoto event={first} className="col-span-2 row-span-2 aspect-[4/3] md:aspect-auto" />
+        {rest.map((event) => (
+          <EventPhoto key={event.image} event={event} className="aspect-[4/5]" />
+        ))}
+      </div>
+    </PageSection>
+  );
+}
+
+function EventPhoto({ event, className }: { event: { image: string; caption: string }; className?: string }) {
+  return (
+    <figure className={cn('group relative overflow-hidden rounded-lg bg-gray-200', className)}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={event.image}
+        alt={event.caption}
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+      />
+      <figcaption className="absolute inset-x-0 bottom-0 p-3 text-xs text-white bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {event.caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 /* ---------------------------------------------------------------- Future --- */
 
 function FutureSection() {
@@ -536,10 +536,16 @@ export default function Home() {
   const getBlob = useBlobChasing();
   const showOrb = !home.heroVideo;
 
+  // Draw while the blob is visible, plus one last frame to clear it once it has faded out.
+  const blobDrawn = useRef(true);
   useTicker(() => {
     if (!showOrb) return;
     const { blob, renderer, scene, camera } = getBlob();
-    if (blob && blob.material.opacity >= 0) renderer.render(scene, camera);
+    if (!blob) return;
+    const visible = blob.material.opacity > 0.002;
+    if (!visible && !blobDrawn.current) return;
+    blobDrawn.current = visible;
+    renderer.render(scene, camera);
   });
 
   useMotion(() => void (showOrb && fadeBlob(getBlob, 1)), { enable: () => !ui.isLoaderViewToggled }, [ui.isLoaderViewToggled]);
@@ -599,6 +605,7 @@ export default function Home() {
       <StorySection />
       <FocusAreasSection />
       <IngredientsSection />
+      <RecognitionSection />
       <FutureSection />
       <PartnerSection />
     </PageLayout>

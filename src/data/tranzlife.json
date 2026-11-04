@@ -247,6 +247,43 @@
         ]
       }
     ],
+    "recognitionEyebrow": "On the global stage",
+    "recognitionTitle": "Taking Indian life sciences to the world.",
+    "recognitionText": "From the National Research Development Corporation in New Delhi to international health and investment forums, TranzLife is building partnerships that carry nature-led science beyond borders.",
+    "events": [
+      {
+        "image": "/tranzlife/events/event-2.png",
+        "caption": "At NRDC, Ministry of Science & Technology, New Delhi"
+      },
+      {
+        "image": "/tranzlife/events/event-1.png",
+        "caption": "At NRDC, New Delhi"
+      },
+      {
+        "image": "/tranzlife/events/event-3.png",
+        "caption": "International forum"
+      },
+      {
+        "image": "/tranzlife/events/event-4.png",
+        "caption": "International forum"
+      },
+      {
+        "image": "/tranzlife/events/event-6.png",
+        "caption": "Global partnerships"
+      },
+      {
+        "image": "/tranzlife/events/event-7.png",
+        "caption": "Global partnerships"
+      },
+      {
+        "image": "/tranzlife/events/event-8.png",
+        "caption": "Global partnerships"
+      },
+      {
+        "image": "/tranzlife/events/event-5.png",
+        "caption": "Industry summit"
+      }
+    ],
     "futureEyebrow": "The future of life",
     "futureTitle": "Advancing genetic insights.\nDiscovering biomarkers.\nTransforming futures.",
     "futureImage": "/tranzlife/brochure/dna-face.png",
@@ -308,7 +345,7 @@
       "price": "",
       "accent": "#6F7F1E",
       "tint": "#EDE8C9",
-      "image": "/tranzlife/packs/liverdetox.svg",
+      "image": "/tranzlife/products/liverdetox.png",
       "introTitle": "Detoxifies.\nProtects.\nRejuvenates.",
       "retailSlang": "Liver booster",
       "description": "LiverDetox is a polyherbal concoction of eleven classical Ayurvedic herbs, led by Bhumyamalaki, Kalmegh and Kutki. It supports natural liver detoxification, healthy liver function and comfortable digestion, as part of a balanced daily routine.",
@@ -407,7 +444,7 @@
       "price": "",
       "accent": "#2F7D46",
       "tint": "#DCEAD3",
-      "image": "/tranzlife/packs/pulmoclear.svg",
+      "image": "/tranzlife/spin/pulmoclear/001.webp",
       "introTitle": "Detoxifies.\nCleanses.\nStrengthens.",
       "retailSlang": "Lung booster",
       "description": "PulmoClear Lung Booster Gummies bring together Vasaka, Tulsi, Mulethi, Turmeric and Giloy with Vitamin C, Vitamin D3 and Zinc in a natural berry-flavoured gummy. They support respiratory health naturally — helping cleanse the lungs, soothe the airways and strengthen the body's natural defences.",
@@ -504,7 +541,7 @@
       "price": "",
       "accent": "#1F5A35",
       "tint": "#D7E3CF",
-      "image": "/tranzlife/packs/craving-control-gummies.svg",
+      "image": "/tranzlife/products/craving-control-gummies.png",
       "introTitle": "Craving control.\nLife in control.",
       "retailSlang": "For heavy smokers",
       "description": "A premium, science-backed formula designed for heavy smokers who are ready to quit. Its dual action combines a craving control complex — to help reduce urges and withdrawal discomfort — with a lung detox complex that supports natural detoxification and respiratory wellness, while keeping you calm and balanced.",
@@ -614,7 +651,7 @@
       "price": "₹399",
       "accent": "#D9822B",
       "tint": "#F5E3C8",
-      "image": "/tranzlife/packs/reviva.svg",
+      "image": "/tranzlife/products/reviva.png",
       "introTitle": "Balance.\nRestore.\nRevitalize.",
       "retailSlang": "The spirit of organics",
       "description": "Reviva is a natural massage roll-on with dill and eucalyptus essential oils, made as everyday support for people managing diabetes. A gentle morning ritual around the belly button, designed to support circulation, comfort and overall vitality — alongside the care plan your doctor recommends.",
@@ -702,7 +739,7 @@
       "price": "",
       "accent": "#7A4BA6",
       "tint": "#E9DEF2",
-      "image": "/tranzlife/packs/cyclerelief.svg",
+      "image": "/tranzlife/products/cyclerelief.png",
       "introTitle": "Nature's care.\nEvery cycle.",
       "retailSlang": "Plant based",
       "description": "CycleRelief is natural support for menstrual comfort and well-being. Dill and eucalyptus essential oils in a fast-absorbing, non-greasy roll-on help ease menstrual cramps, soothe abdominal discomfort and relax tense muscles. Plant based, not tested on animals, in recyclable packaging.",
@@ -905,43 +942,6 @@
       {
         "title": "Global vision, local impact",
         "text": "Made in India, built for the world."
-      }
-    ],
-    "recognitionEyebrow": "On the global stage",
-    "recognitionTitle": "Taking Indian life sciences to the world.",
-    "recognitionText": "From the National Research Development Corporation in New Delhi to international health and investment forums, TranzLife is building partnerships that carry nature-led science beyond borders.",
-    "events": [
-      {
-        "image": "/tranzlife/events/event-2.png",
-        "caption": "At NRDC, Ministry of Science & Technology, New Delhi"
-      },
-      {
-        "image": "/tranzlife/events/event-1.png",
-        "caption": "At NRDC, New Delhi"
-      },
-      {
-        "image": "/tranzlife/events/event-3.png",
-        "caption": "International forum"
-      },
-      {
-        "image": "/tranzlife/events/event-4.png",
-        "caption": "International forum"
-      },
-      {
-        "image": "/tranzlife/events/event-6.png",
-        "caption": "Global partnerships"
-      },
-      {
-        "image": "/tranzlife/events/event-7.png",
-        "caption": "Global partnerships"
-      },
-      {
-        "image": "/tranzlife/events/event-8.png",
-        "caption": "Global partnerships"
-      },
-      {
-        "image": "/tranzlife/events/event-5.png",
-        "caption": "Industry summit"
       }
     ],
     "credentialsTitle": "Credentials and recognition",

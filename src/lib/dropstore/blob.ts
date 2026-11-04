@@ -2,9 +2,9 @@
 
 import { useLayoutEffect } from 'react';
 import * as THREE from 'three';
-import { gsap, isTouchDevice } from './gsap';
+import { gsap, isTouchDevice, breakpoints } from './gsap';
 import { Pointer } from './pointer';
-import { useTicker } from './motion';
+import { useMotion, useTicker } from './motion';
 import { blobVertexHead, blobVertexMain } from './blob-shaders';
 
 /** Height of the orthographic frustum in world units. */
@@ -157,6 +157,27 @@ let blob: Blob | undefined;
 
 export const getAspect = () => window.innerWidth / window.innerHeight;
 
+let blobDisabled = false;
+const noopRenderer = () => {
+  const noop = () => {};
+  return {
+    render: noop,
+    setSize: noop,
+    setPixelRatio: noop,
+    setClearColor: noop,
+    dispose: noop,
+    outputColorSpace: THREE.LinearSRGBColorSpace,
+  } as unknown as THREE.WebGLRenderer;
+};
+
+/** Lite mode: stop drawing the orb and hide its canvas. */
+export function disableBlob() {
+  blobDisabled = true;
+  const canvas = document.getElementById('blob-canvas');
+  if (canvas) canvas.style.display = 'none';
+  if (renderer) renderer.render = () => {};
+}
+
 function ensureScene() {
   if (renderer) return;
   const aspect = getAspect();
@@ -169,16 +190,27 @@ function ensureScene() {
     -100,
     100
   );
-  renderer = new THREE.WebGLRenderer({
-    canvas: document.getElementById('blob-canvas') as HTMLCanvasElement,
-    alpha: true,
-    antialias: true,
-  });
+  try {
+    if (blobDisabled) throw new Error('blob disabled');
+    // Probe on a throwaway canvas first: three.js console.errors on failure, which trips the dev overlay.
+    const probe = document.createElement('canvas');
+    if (!probe.getContext('webgl2') && !probe.getContext('webgl')) throw new Error('no webgl');
+    renderer = new THREE.WebGLRenderer({
+      canvas: document.getElementById('blob-canvas') as HTMLCanvasElement,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance',
+    });
+  } catch {
+    // No WebGL (GPU disabled / blocklisted) or lite mode: keep the site working without the orb.
+    renderer = noopRenderer();
+  }
   // The original was built on a pre-r152 three.js that rendered without colour
   // management; linear output keeps the blob's whites and reflections identical.
   renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(3, window.devicePixelRatio));
+  // A soft glossy orb gains nothing from 3x; 1x is plenty and costs a fraction of the fill.
+  renderer.setPixelRatio(Math.min(1, window.devicePixelRatio));
   renderer.setClearColor(0xffffff, 0);
   ambientLight = new THREE.AmbientLight(0x000000, 0.5);
   dirLight = new THREE.DirectionalLight(0xe2c784, 0.6);
