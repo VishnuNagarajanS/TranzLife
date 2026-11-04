@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     "docs/**",
     "scripts/**",
+    // A teammate's copy of the site kept beside this one for comparison.
+    "Tranz_life_zip*/**",
     "*.js",
   ]),
 ]);

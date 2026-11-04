@@ -8,6 +8,7 @@ import { createHeadingInTween } from '@/lib/dropstore/heading-tween';
 import { ImageSequence } from '@/lib/dropstore/image-sequence';
 import type { Product } from '@/lib/tranzlife-data';
 import { cn } from '@/lib/utils';
+import { IngredientRain } from './IngredientRain';
 import { PRODUCT_POINTER_SIZE, usePreloader } from './state';
 import { Text } from './Text';
 
@@ -112,8 +113,13 @@ export interface ProductTileProps {
   withPointerText?: boolean;
   withHoverAnimation?: boolean;
   withImageSequence?: boolean;
+  /** Ingredient silhouettes drop into the card on hover. */
+  withIngredientRain?: boolean;
   htmlAttributes?: React.AnchorHTMLAttributes<HTMLAnchorElement> & Record<string, unknown>;
 }
+
+/** With the ingredient rain the name sits on a cream pill on hover, so it reads over the pieces. */
+const PILL = 'px-3 py-1.5 transition-colors duration-300 [.product-tile:hover_&]:bg-cream/90';
 
 /** Pack on a soft tint of the product's accent; on hover the name and line slide up. */
 export function ProductTile({
@@ -127,6 +133,7 @@ export function ProductTile({
   withPointerText = true,
   withHoverAnimation = true,
   withImageSequence = false,
+  withIngredientRain = false,
   htmlAttributes,
 }: ProductTileProps) {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -185,7 +192,8 @@ export function ProductTile({
       data-pointer-chaser-size={withPointerText ? PRODUCT_POINTER_SIZE : undefined}
       data-draggable={draggable ? '' : undefined}
     >
-      <div className="flex items-center justify-center w-full h-full pointer-events-none p-[8%]">
+      {withIngredientRain && <IngredientRain product={product} />}
+      <div className="relative flex items-center justify-center w-full h-full pointer-events-none p-[8%]" data-product-tile-image="">
         <ImageSequenceView
           key={frames[0]}
           frames={frames}
@@ -198,14 +206,19 @@ export function ProductTile({
       </div>
       {withProductInfo && (
         <div
-          className="absolute inset-0 flex gap-6 items-end justify-between p-6 pointer-events-none"
+          className="absolute inset-0 z-10 flex gap-6 items-end justify-between p-6 pointer-events-none"
           data-product-tile-info=""
         >
-          <Text tag="h2" variant="text-base" data-product-tile-title="">
+          <Text tag="h2" variant="text-base" className={cn(withIngredientRain && PILL, 'rounded-2xl')} data-product-tile-title="">
             <div className="uppercase tracking-[0.08em]">{product.title}</div>
             <span className="text-gray-800">{product.subtitle}</span>
           </Text>
-          <Text tag="p" variant="text-sm" className="uppercase tracking-[0.12em] text-right" data-product-tile-price="">
+          <Text
+            tag="p"
+            variant="text-sm"
+            className={cn(withIngredientRain && PILL, 'rounded-full uppercase tracking-[0.12em] text-right')}
+            data-product-tile-price=""
+          >
             <span className="inline-block w-2 h-2 rounded-full mr-2" style={{ backgroundColor: product.accent }} />
             {product.focus}
           </Text>

@@ -793,6 +793,15 @@ export function ProductMoreSection({ product }: { product: Product }) {
       edgeResistance: 0.8,
       activeCursor: 'grabbing',
       zIndexBoost: false,
+      // Once it really moved, the release must not open the product under the pointer.
+      onDragStart() {
+        bounds.current?.setAttribute('data-just-dragged', '');
+        bounds.current?.querySelectorAll('[data-product-parent-active]').forEach((el) => el.removeAttribute('data-product-parent-active'));
+      },
+      onRelease() {
+        // The click fires right after release; clear the flag once it has been swallowed.
+        window.setTimeout(() => bounds.current?.removeAttribute('data-just-dragged'), 60);
+      },
     });
     return () => void instance.kill();
   }, []);
@@ -836,6 +845,7 @@ export function ProductMoreSection({ product }: { product: Product }) {
                     product={p}
                     pointerText="Drag"
                     draggable
+                    withIngredientRain
                     htmlAttributes={{
                       style: { width: '100%' },
                       onClick: markActive,
