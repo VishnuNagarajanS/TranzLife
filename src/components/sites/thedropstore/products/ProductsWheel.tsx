@@ -34,11 +34,14 @@ const wrap180 = (x: number) => ((((x % 360) + 360) % 360) + 180) % 360 - 180;
 const wheelColor = (accent: string) => `color-mix(in srgb, ${accent} 70%, var(--color-forest))`;
 
 /** Open transition: a tint tile grows from the clicked jar to fill the screen while a copy of it flies to centre. */
-function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration: number) {
+function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration: number, angle: number) {
   const foreground = document.getElementById('fixed-foreground');
   if (!foreground) return;
-  const rect = el.getBoundingClientRect();
-  const size = Math.max(rect.width, rect.height);
+  // Start exactly where the jar is on the wheel: same centre, same size, same tilt as the wheel is holding it.
+  const art = el.querySelector<HTMLElement>('.products-wheel__art');
+  const scale = parseFloat(/scale\(([\d.]+)/.exec(el.style.transform)?.[1] ?? '1');
+  const rect = (art ?? el).getBoundingClientRect();
+  const size = (art ? art.offsetHeight : el.offsetWidth) * scale;
   const cx = rect.left + rect.width / 2;
   const cy = rect.top + rect.height / 2;
 
@@ -63,7 +66,7 @@ function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration:
     jar.src = product.image;
     jar.alt = '';
   }
-  gsap.set(jar, { position: 'absolute', left: cx - size / 2, top: cy - size / 2, width: size, height: size, objectFit: 'contain' });
+  gsap.set(jar, { position: 'absolute', left: cx - size / 2, top: cy - size / 2, width: size, height: size, objectFit: 'contain', rotation: angle });
 
   scene.append(tint, jar);
   foreground.prepend(scene);
@@ -76,9 +79,26 @@ function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration:
   const vars = { ease: 'power4.inOut', duration: duration - lead, delay: lead };
   // Lands leaning left by the same angle the product page starts at, so the hand-off is seamless.
   gsap.to(jar, { ease: 'power2.inOut', duration, rotation: -12 });
+  if (!spinning) {
+    // No turntable frames for this product: fake the turn by squeezing the picture like a card spinning on its axis.
+    const turn = { t: 0 };
+    gsap.to(turn, {
+      t: 3,
+      duration,
+      ease: 'power1.inOut',
+      onUpdate: () => {
+        const x = Math.max(0.12, Math.abs(Math.cos(turn.t * Math.PI)));
+        gsap.set(jar, { scaleX: x });
+      },
+      onComplete: () => void gsap.set(jar, { scaleX: 1 }),
+    });
+  }
   if (spinning && spinSet) {
     const ctx = (jar as HTMLCanvasElement).getContext('2d');
-    const first = nearestFrame(spinSet, 0);
+    // Carry on from the frame the wheel was showing, so the jar does not pop at the start.
+    const startIdx = Number(art?.dataset.frame ?? 0);
+    const startPhase = startIdx / SPIN_CLIPS[product.slug].count;
+    const first = nearestFrame(spinSet, startIdx);
     if (first && ctx) ctx.drawImage(first.image, 0, 0);
     const turn = { t: 0 };
     gsap.to(turn, {
@@ -86,7 +106,7 @@ function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration:
       duration,
       ease: 'power1.inOut',
       onUpdate: () => {
-        const frame = nearestFrame(spinSet, spinFrameIndex(product.slug, SPIN_CLIPS[product.slug].loop ? turn.t * 3 : turn.t * 6));
+        const frame = nearestFrame(spinSet, spinFrameIndex(product.slug, startPhase + (SPIN_CLIPS[product.slug].loop ? turn.t * 3 : turn.t * 6)));
         if (frame && ctx) {
           ctx.clearRect(0, 0, spinSet.width, spinSet.height);
           ctx.drawImage(frame.image, 0, 0);
@@ -106,7 +126,7 @@ function flyJar(el: HTMLElement, product: Product, stage: HTMLElement, duration:
 export function ProductsWheel({ products, ...rest }: { products: Product[] } & Record<string, unknown>) {
   const [, dispatch] = useUI();
   const [focus, setFocus] = useState(0);
-  const flightSource = useRef<{ el: HTMLElement; product: Product } | null>(null);
+  const flightSource = useRef<{ el: HTMLElement; product: Product; angle: number } | null>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLElement>(null);
   const dragRef = useRef<HTMLDivElement>(null);
@@ -239,6 +259,7 @@ export function ProductsWheel({ products, ...rest }: { products: Product[] } & R
             ctx.clearRect(0, 0, canvases[i]!.width, canvases[i]!.height);
             ctx.drawImage(frame.image, 0, 0);
             lastFrame[i] = frame.index;
+            canvases[i]!.dataset.frame = String(frame.index);
           }
         }
       });
@@ -330,21 +351,14 @@ export function ProductsWheel({ products, ...rest }: { products: Product[] } & R
         event.stopPropagation();
         return;
       }
+      // Any jar opens straight away (no waiting for the wheel to bring it to the centre first).
       let index = focusIdx;
-      if (hit.classList.contains('products-wheel__bottle')) {
-        index = bottles.indexOf(hit as HTMLAnchorElement);
-        const delta = wrap180(index * STEP + scrollA + dragA);
-        if (Math.abs(delta) > STEP / 2) {
-          event.preventDefault();
-          event.stopPropagation();
-          dragA -= Math.round(delta / STEP) * STEP;
-          return;
-        }
-      }
+      if (hit.classList.contains('products-wheel__bottle')) index = bottles.indexOf(hit as HTMLAnchorElement);
+      const angle = wrap180(index * STEP + cur);
       const product = items[index];
       const source = bottles[index];
       if (!product || !source) return;
-      flightSource.current = { el: source, product };
+      flightSource.current = { el: source, product, angle };
       dispatch({ type: 'setProductScreenTransition', payload: product });
     };
 
@@ -423,7 +437,7 @@ export function ProductsWheel({ products, ...rest }: { products: Product[] } & R
       const source = flightSource.current;
       const stage = stageRef.current;
       if (!source || !stage) return;
-      flyJar(source.el, source.product, stage, duration);
+      flyJar(source.el, source.product, stage, duration, source.angle);
     },
   });
 

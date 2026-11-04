@@ -20,8 +20,11 @@ import { RollingValue } from '@/components/sites/thedropstore/RollingValue';
 import { StorySection } from '@/components/sites/thedropstore/home/StorySection';
 import { CredentialLogoStrip } from '@/components/sites/thedropstore/CredentialLogos';
 
-const fadeBlob = (getBlob: ReturnType<typeof useBlobChasing>, opacity: number) =>
-  gsap.to(getBlob().blob.material, { opacity, duration: 0.5, ease: 'power2.inOut' });
+// The blob may not exist yet when a scroll trigger fires on creation (restored scroll position).
+const fadeBlob = (getBlob: ReturnType<typeof useBlobChasing>, opacity: number) => {
+  const { blob } = getBlob();
+  if (blob) gsap.to(blob.material, { opacity, duration: 0.5, ease: 'power2.inOut' });
+};
 
 const lines = (text: string) =>
   text.split('\n').map((line, i, all) => (

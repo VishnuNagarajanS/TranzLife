@@ -36,8 +36,11 @@ function FixedBack() {
   );
 }
 
-const fadeBlob = (getBlob: ReturnType<typeof useBlobChasing>, opacity: number) =>
-  gsap.to(getBlob().blob.material, { opacity, duration: 0.5, ease: 'power2.inOut' });
+// The blob may not exist yet when a scroll trigger fires on creation (restored scroll position).
+const fadeBlob = (getBlob: ReturnType<typeof useBlobChasing>, opacity: number) => {
+  const { blob } = getBlob();
+  if (blob) gsap.to(blob.material, { opacity, duration: 0.5, ease: 'power2.inOut' });
+};
 
 /** `/products`: the original Drop Store home — pinned headline with the five floating tiles. */
 export function ProductsIndex() {
