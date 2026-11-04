@@ -78,6 +78,9 @@ const PIECES: { x: number; y: number; size: number; rotate: number }[] = [
   { x: 74, y: 70, size: 42, rotate: 84 },
 ];
 
+/** Degrees the card leans on hover (the pack leans a little further the same way). */
+const TILT = 3;
+
 function mix(a: string, b: string, t: number) {
   const pa = parseInt(a.slice(1), 16);
   const pb = parseInt(b.slice(1), 16);
@@ -126,7 +129,13 @@ export function IngredientRain({ product }: { product: Product }) {
         const height = tile.offsetHeight;
         tl = gsap.timeline();
         // The tile's own CSS transition fades the colour; GSAP only moves it.
-        tl.set(tile, { backgroundColor: deep }, 0).to(tile, { rotate: 3, scale: 1.015, duration: 0.5, ease: 'power3.out' }, 0);
+        // Shrink just enough that the tilted card still fits inside its own slot (no overlap with neighbours, no clipped corners).
+        const rad = (TILT * Math.PI) / 180;
+        const w = tile.offsetWidth;
+        const cos = Math.cos(rad);
+        const sin = Math.sin(rad);
+        const fit = Math.min(w / (w * cos + height * sin), height / (height * cos + w * sin));
+        tl.set(tile, { backgroundColor: deep }, 0).to(tile, { rotate: TILT, scale: fit, duration: 0.5, ease: 'power3.out' }, 0);
         if (pack) tl.to(pack, { rotate: 6, scale: 1.05, duration: 0.6, ease: 'back.out(2)' }, 0);
         pieces.forEach((piece, i) => {
           const rest = Number(piece.dataset.rotate);
