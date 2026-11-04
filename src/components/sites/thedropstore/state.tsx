@@ -26,7 +26,7 @@ type UIAction =
   | { type: 'setProductScreenTransition'; payload?: Product };
 
 const initialUI: UIState = {
-  screenTransitionDurationMS: 2000,
+  screenTransitionDurationMS: 900,
   screenTransitionProduct: undefined,
   isMainMenuToggled: false,
   isLoaderViewToggled: true,

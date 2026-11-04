@@ -5,6 +5,7 @@ import { gsap, ScrollSmoother, isTouchDevice, REFERENCE_FRAME_TIME, normalizeToD
 import { useMotion } from '@/lib/dropstore/motion';
 import { Pointer } from '@/lib/dropstore/pointer';
 import { blobHdriFiles } from '@/lib/dropstore/blob';
+import { initLiteMode } from '@/lib/dropstore/lite';
 import { cn } from '@/lib/utils';
 import { Providers, useUI, usePreloader, DEFAULT_POINTER_SIZE } from './state';
 import { ScreenTransitionProvider } from './ScreenTransition';
@@ -206,9 +207,10 @@ function PointerChaser() {
 /* -------------------------------------------------------------- Shell --- */
 
 function SmoothScroll() {
+  useEffect(() => initLiteMode(), []);
   useLayoutEffect(() => {
     if (isTouchDevice() || ScrollSmoother.get()) return;
-    ScrollSmoother.create({ wrapper: '#smooth-container', content: '#smooth-content', effects: true, smooth: 0.5 });
+    ScrollSmoother.create({ wrapper: '#smooth-container', content: '#smooth-content', effects: true, smooth: 1 });
   }, []);
   return null;
 }

@@ -12,10 +12,12 @@ import { Text } from '../Text';
 import { Icon } from '../Icon';
 import { ImageSequenceViewProps, ProductTile, ProductTransitionContainer } from '../ProductTile';
 import { useUI } from '../state';
+import { SPIN_FRAME_SLUGS } from '../products/spinFrames';
+import { ProductSpinFrames } from './ProductSpinFrames';
 import { Marquee } from './Marquee';
 import { EnquireButton } from './EnquireButton';
 import { ProductDecorationsBottomLeft, ProductDecorationsBottomRight } from './ProductDecorations';
-import { Draggable, ScreenTransitionHandlers, useProductLook, useProductUI } from './productUI';
+import { Draggable, ScreenTransitionHandlers, useProductUI } from './productUI';
 import styles from './ProductPage.module.css';
 
 /* Sections inside the pinned product block leave the centre column free for the pack. */
@@ -854,16 +856,11 @@ export function ProductMoreSection({ product }: { product: Product }) {
 
 /* ------------------------------------------------------------- Commerce --- */
 
-export function ProductCommerceSection({
-  product,
-  imageSequenceProps,
-}: {
-  product: Product;
-  imageSequenceProps?: Partial<ImageSequenceViewProps>;
-}) {
+export function ProductCommerceSection({ product }: { product: Product; imageSequenceProps?: Partial<ImageSequenceViewProps> }) {
   const [ui] = useUI();
-  const [withFadeIn] = useState(() => !ui.screenTransitionProduct);
-  const look = useProductLook(product);
+  // Arriving from a flying jar: show the image at once, exactly where the jar landed, instead of fading it in.
+  const [withFadeIn] = useState(() => !ui.screenTransitionProduct && !(typeof document !== 'undefined' && document.getElementById('screen-transition-scene')));
+
 
   return (
     <div className="relative" style={{ paddingTop: 'var(--nav-space-top)' }}>
@@ -872,14 +869,20 @@ export function ProductCommerceSection({
         data-product-image=""
       >
         <div className="w-full sm:w-[unset]" data-loaded-in="fade" data-entered-in={withFadeIn ? 'fade' : undefined}>
-          <ProductTile
-            product={product}
-            look={look}
-            imageSequenceProps={imageSequenceProps}
-            withBackgroundColor={false}
-            withProductInfo={false}
-            withImageSequence
-          />
+          {SPIN_FRAME_SLUGS.has(product.slug) ? (
+            <ProductSpinFrames slug={product.slug} label={product.title} />
+          ) : (
+            <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={product.image}
+              alt={product.title}
+              draggable={false}
+              className="block mx-auto object-contain pointer-events-none select-none"
+              style={{ height: 'min(60svh, 48vw)', width: 'min(60svh, 48vw)' }}
+            />
+            </>
+          )}
         </div>
         <div
           className="flex flex-col gap-8 absolute bottom-6 w-full left-0 right-0 flex justify-center items-center"

@@ -536,10 +536,16 @@ export default function Home() {
   const getBlob = useBlobChasing();
   const showOrb = !home.heroVideo;
 
+  // Draw while the blob is visible, plus one last frame to clear it once it has faded out.
+  const blobDrawn = useRef(true);
   useTicker(() => {
     if (!showOrb) return;
     const { blob, renderer, scene, camera } = getBlob();
-    if (blob && blob.material.opacity >= 0) renderer.render(scene, camera);
+    if (!blob) return;
+    const visible = blob.material.opacity > 0.002;
+    if (!visible && !blobDrawn.current) return;
+    blobDrawn.current = visible;
+    renderer.render(scene, camera);
   });
 
   useMotion(() => void (showOrb && fadeBlob(getBlob, 1)), { enable: () => !ui.isLoaderViewToggled }, [ui.isLoaderViewToggled]);

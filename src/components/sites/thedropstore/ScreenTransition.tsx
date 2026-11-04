@@ -62,6 +62,8 @@ export function ScreenTransitionProvider({ children }: { children: React.ReactNo
       }
       if (pending.current) return;
       pending.current = url.pathname + url.search + url.hash;
+      // Start fetching the destination now so it is ready by the time the leave animation ends.
+      router.prefetch(url.pathname + url.search);
       clearTimers(timers.current);
       setPhase('leave');
       timers.current.push(
@@ -79,6 +81,20 @@ export function ScreenTransitionProvider({ children }: { children: React.ReactNo
     const timer = window.setTimeout(() => setPhase('idle'), durationRef.current);
     return () => window.clearTimeout(timer);
   }, [phase, pathname, durationRef]);
+
+  // Warm the internal links on the page while the browser is idle, so clicks land instantly.
+  useEffect(() => {
+    const warm = () => {
+      const hrefs = new Set<string>();
+      document.querySelectorAll<HTMLAnchorElement>('a[href^="/"]').forEach((a) => {
+        const href = a.getAttribute('href')!;
+        if (!/.[a-z0-9]+$/i.test(href.split('#')[0])) hrefs.add(href.split('#')[0]);
+      });
+      [...hrefs].slice(0, 24).forEach((href) => router.prefetch(href));
+    };
+    const timer = window.setTimeout(warm, 2500);
+    return () => window.clearTimeout(timer);
+  }, [router, pathname]);
 
   useEffect(() => {
     const onClick = (event: MouseEvent) => {
